@@ -6,8 +6,10 @@
     <!-- Formes Bauhaus -->
     <BauhausShapes />
 
-    <!-- Curseur personnalisé -->
-    <FlamesCursor />
+    <!-- Curseur personnalisé (client-side uniquement) -->
+    <ClientOnly>
+      <FlamesCursor />
+    </ClientOnly>
 
     <AppHeader />
     <main class="flex-1 pt-20 relative z-10">
