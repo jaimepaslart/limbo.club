@@ -1,5 +1,5 @@
 <template>
-  <div v-if="mounted" class="relative language-switcher" ref="dropdownRef">
+  <div class="relative language-switcher" ref="dropdownRef">
     <button
       @click.stop="toggleDropdown"
       class="flex items-center space-x-2 text-light/60 hover:text-light transition-colors text-sm uppercase tracking-wider font-medium"
@@ -46,7 +46,6 @@ const switchLocalePath = useSwitchLocalePath()
 
 const isOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
-const mounted = ref(false)
 
 const currentLocale = computed(() => {
   return locales.value.find(l => l.code === locale.value) || locales.value[0]
@@ -79,10 +78,6 @@ const handleClickOutside = (event: MouseEvent) => {
     document.removeEventListener('click', handleClickOutside)
   }
 }
-
-onMounted(() => {
-  mounted.value = true
-})
 
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside)
