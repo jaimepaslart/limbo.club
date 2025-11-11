@@ -1,7 +1,7 @@
 <template>
   <div class="relative" ref="dropdownRef">
     <button
-      @click="isOpen = !isOpen"
+      @click="toggleDropdown"
       class="flex items-center space-x-2 text-light/60 hover:text-light transition-colors text-sm uppercase tracking-wider font-medium"
       aria-label="Change language"
     >
@@ -52,23 +52,33 @@ const availableLocales = computed(() => {
   return locales.value
 })
 
+const toggleDropdown = () => {
+  isOpen.value = !isOpen.value
+
+  // Si on ouvre le dropdown, ajouter le listener après le prochain tick
+  if (isOpen.value) {
+    nextTick(() => {
+      document.addEventListener('click', handleClickOutside, { once: false })
+    })
+  }
+}
+
 const switchLanguage = async (code: string) => {
+  document.removeEventListener('click', handleClickOutside)
   await navigateTo(switchLocalePath(code))
   isOpen.value = false
 }
 
 // Close dropdown when clicking outside
-onMounted(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
-      isOpen.value = false
-    }
-  }
-  document.addEventListener('click', handleClickOutside)
-
-  onBeforeUnmount(() => {
+const handleClickOutside = (event: MouseEvent) => {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
+    isOpen.value = false
     document.removeEventListener('click', handleClickOutside)
-  })
+  }
+}
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
 })
 </script>
 

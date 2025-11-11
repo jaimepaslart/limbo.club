@@ -107,16 +107,12 @@ onMounted(() => {
   }
 
   // Cacher le curseur par défaut une fois le composant chargé
-  document.documentElement.style.cursor = 'none'
-  document.body.style.cursor = 'none'
-
-  // Appliquer à tous les éléments interactifs
   const style = document.createElement('style')
   style.id = 'flames-cursor-style'
   style.textContent = `
-    *, a, button, [role="button"], input, textarea, select {
-      cursor: none !important;
-    }
+    * { cursor: none; }
+    a, button, [role="button"] { cursor: none; }
+    input, textarea, select { cursor: text; }
   `
   document.head.appendChild(style)
 
@@ -126,10 +122,6 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (typeof window === 'undefined') return
-
-  // Restaurer le curseur par défaut
-  document.documentElement.style.cursor = ''
-  document.body.style.cursor = ''
 
   // Retirer le style injecté
   const style = document.getElementById('flames-cursor-style')
