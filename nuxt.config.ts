@@ -6,8 +6,41 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
-    'nuxt-mcp'
+    'nuxt-mcp',
+    '@nuxtjs/i18n'
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: 'fr',
+        name: 'Français',
+        iso: 'fr-FR',
+        file: 'fr.json'
+      },
+      {
+        code: 'eu',
+        name: 'Euskara',
+        iso: 'eu-ES',
+        file: 'eu.json'
+      },
+      {
+        code: 'es',
+        name: 'Español',
+        iso: 'es-ES',
+        file: 'es.json'
+      }
+    ],
+    defaultLocale: 'fr',
+    strategy: 'prefix_except_default',
+    lazy: true,
+    langDir: 'locales',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    }
+  },
 
   app: {
     head: {

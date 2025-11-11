@@ -1,9 +1,12 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-dark text-light limbo-flames-bg relative">
+  <div class="min-h-screen flex flex-col limbo-flames-bg relative">
     <!-- Fond de flammes abstraites -->
     <div class="limbo-flames-overlay"></div>
 
-    <!-- Curseur avec flammes -->
+    <!-- Formes Bauhaus -->
+    <BauhausShapes />
+
+    <!-- Curseur personnalisé -->
     <FlamesCursor />
 
     <AppHeader />
@@ -14,13 +17,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
-
 <style scoped>
 .limbo-flames-bg {
   position: relative;
   overflow-x: hidden;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .limbo-flames-overlay {
@@ -38,5 +41,6 @@
   background-size: 200% 200%, 200% 200%, 150% 150%;
   filter: blur(80px);
   animation: limbo-flames 20s ease-in-out infinite;
+  transition: opacity 0.3s ease, background 0.3s ease;
 }
 </style>

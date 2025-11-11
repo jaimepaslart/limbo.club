@@ -1,8 +1,12 @@
 <template>
   <img
     src="/images/logo-limbo.svg"
-    alt="Limbo"
+    alt="Limbo - Agenda culturel transfrontalier Pays Basque"
     :class="classes"
+    width="120"
+    height="40"
+    fetchpriority="high"
+    loading="eager"
   >
 </template>
 

@@ -4,20 +4,25 @@
     <section class="min-h-screen flex items-center justify-center relative">
       <div class="container mx-auto px-6 lg:px-12">
         <div class="max-w-6xl mx-auto">
-          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-8">INTRO</p>
-          <h1 class="text-7xl md:text-8xl lg:text-9xl font-display font-bold text-light mb-12 leading-[0.9] tracking-tighter">
-            LIMBO
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-8 bauhaus-accent">{{ t('home.hero.tagline') }}</p>
+          <h1 class="text-7xl md:text-8xl lg:text-9xl font-display font-bold text-light mb-12 leading-[0.9] tracking-tighter bauhaus-title">
+            {{ t('home.hero.title') }}
           </h1>
-          <p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-16 max-w-3xl font-light">
-            Agenda culturel transfrontalier<br />
-            <span class="text-primary">Pays Basque nord & sud</span>
+          <p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-8 max-w-3xl font-light">
+            {{ t('home.hero.subtitle') }}
+          </p>
+          <p class="text-xl md:text-2xl text-light/50 mb-4 font-light">
+            {{ t('home.hero.description') }}
+          </p>
+          <p class="text-lg md:text-xl text-primary mb-16 font-light">
+            {{ t('home.hero.location') }}
           </p>
           <div class="flex flex-col sm:flex-row gap-6">
             <NuxtLink
               to="/agenda"
               class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
             >
-              <span class="mr-3">Découvrir l'agenda</span>
+              <span class="mr-3">{{ t('common.actions.discover') }}</span>
               <span class="transform group-hover:translate-x-1 transition-transform">→</span>
             </NuxtLink>
           </div>
@@ -29,9 +34,9 @@
     <section class="min-h-screen flex items-center py-24 border-t border-white/5">
       <div class="container mx-auto px-6 lg:px-12">
         <div class="max-w-7xl mx-auto">
-          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">AGENDA</p>
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">{{ t('home.events.section') }}</p>
           <h2 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-light mb-20 leading-tight">
-            À la une
+            {{ t('home.events.title') }}
           </h2>
 
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
@@ -51,7 +56,7 @@
                   {{ event.title }}
                 </h3>
                 <p class="text-light/50 mb-2">{{ formatDate(event.date) }}</p>
-                <p class="text-light/40 text-sm">{{ event.city }} · {{ event.side === 'nord' ? 'Nord' : 'Sud' }}</p>
+                <p class="text-light/40 text-sm">{{ event.city }} · {{ event.side === 'nord' ? t('home.events.nord') : t('home.events.sud') }}</p>
               </NuxtLink>
             </div>
           </div>
@@ -61,7 +66,7 @@
               to="/agenda"
               class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
             >
-              <span class="mr-3">Voir tous les événements</span>
+              <span class="mr-3">{{ t('common.actions.viewAll') }}</span>
               <span class="transform group-hover:translate-x-1 transition-transform">→</span>
             </NuxtLink>
           </div>
@@ -73,18 +78,18 @@
     <section class="min-h-screen flex items-center border-t border-white/5">
       <div class="container mx-auto px-6 lg:px-12">
         <div class="max-w-4xl mx-auto">
-          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">QUIZ</p>
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">{{ t('home.quiz.section') }}</p>
           <h2 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-light mb-12 leading-tight">
-            Quel événement<br />te correspond ?
+            {{ t('home.quiz.title') }}
           </h2>
           <p class="text-xl md:text-2xl text-light/50 mb-16 max-w-2xl font-light">
-            Quelques questions pour découvrir les événements qui matchent avec tes envies.
+            {{ t('home.quiz.description') }}
           </p>
           <NuxtLink
             to="/quiz"
             class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
           >
-            <span class="mr-3">Commencer le quiz</span>
+            <span class="mr-3">{{ t('common.actions.startQuiz') }}</span>
             <span class="transform group-hover:translate-x-1 transition-transform">→</span>
           </NuxtLink>
         </div>
@@ -95,31 +100,31 @@
     <section class="min-h-screen flex items-center border-t border-white/5">
       <div class="container mx-auto px-6 lg:px-12">
         <div class="max-w-5xl mx-auto">
-          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">CONCEPT</p>
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">{{ t('home.about.section') }}</p>
           <h2 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-light mb-16 leading-tight">
-            Le concept<br />Limbo
+            {{ t('home.about.title') }}
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
             <div>
               <p class="text-xl text-light/60 leading-relaxed mb-8 font-light">
-                Un agenda culturel qui rassemble les événements du Pays Basque nord et sud.
+                {{ t('home.about.description') }}
               </p>
               <p class="text-light/40 leading-relaxed font-light">
-                Notre mission : faciliter la découverte culturelle au-delà des frontières.
+                {{ t('home.about.mission') }}
               </p>
             </div>
             <div class="space-y-8">
               <div>
-                <p class="text-sm uppercase tracking-wider text-primary mb-2">Transfrontalier</p>
-                <p class="text-light/50 font-light">Un pont culturel entre deux territoires</p>
+                <p class="text-sm uppercase tracking-wider text-primary mb-2">{{ t('home.about.values.crossBorder.title') }}</p>
+                <p class="text-light/50 font-light">{{ t('home.about.values.crossBorder.description') }}</p>
               </div>
               <div>
-                <p class="text-sm uppercase tracking-wider text-primary mb-2">Accessible</p>
-                <p class="text-light/50 font-light">Gratuit et ouvert à tous</p>
+                <p class="text-sm uppercase tracking-wider text-primary mb-2">{{ t('home.about.values.accessible.title') }}</p>
+                <p class="text-light/50 font-light">{{ t('home.about.values.accessible.description') }}</p>
               </div>
               <div>
-                <p class="text-sm uppercase tracking-wider text-primary mb-2">Diversité</p>
-                <p class="text-light/50 font-light">De grandes scènes aux initiatives locales</p>
+                <p class="text-sm uppercase tracking-wider text-primary mb-2">{{ t('home.about.values.diversity.title') }}</p>
+                <p class="text-light/50 font-light">{{ t('home.about.values.diversity.description') }}</p>
               </div>
             </div>
           </div>
@@ -128,7 +133,7 @@
               to="/a-propos"
               class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
             >
-              <span class="mr-3">En savoir plus</span>
+              <span class="mr-3">{{ t('common.actions.learnMore') }}</span>
               <span class="transform group-hover:translate-x-1 transition-transform">→</span>
             </NuxtLink>
           </div>
@@ -139,12 +144,18 @@
 </template>
 
 <script setup lang="ts">
+const { t, locale } = useI18n()
 const { getFeaturedEvents } = useEvents()
 const featuredEvents = getFeaturedEvents()
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
-  return new Intl.DateTimeFormat('fr-FR', {
+  const localeMap: { [key: string]: string } = {
+    fr: 'fr-FR',
+    eu: 'eu-ES',
+    es: 'es-ES'
+  }
+  return new Intl.DateTimeFormat(localeMap[locale.value] || 'fr-FR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
@@ -152,11 +163,11 @@ const formatDate = (dateString: string): string => {
 }
 
 useHead({
-  title: 'Limbo – Agenda culturel transfrontalier Pays Basque nord & sud',
+  title: t('meta.title'),
   meta: [
     {
       name: 'description',
-      content: 'Découvrez les événements culturels du Pays Basque nord et sud. Concerts, expositions, festivals et plus encore.'
+      content: t('meta.description')
     }
   ]
 })

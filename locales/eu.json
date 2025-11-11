@@ -1,0 +1,60 @@
+{
+  "common": {
+    "nav": {
+      "agenda": "Agenda",
+      "quiz": "Quiz",
+      "about": "Honi buruz",
+      "contact": "Kontaktua"
+    },
+    "actions": {
+      "learnMore": "Gehiago jakin",
+      "discover": "Agenda deskubritu",
+      "startQuiz": "Quiza hasi",
+      "viewAll": "Ekitaldi guztiak ikusi"
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "AGENDA KULTURALA",
+      "title": "LIMBO",
+      "subtitle": "Erakusketa · Festa · Hitzaldia · Diseinua",
+      "description": "Mugaz gaindiko animalia soziala 🐈",
+      "location": "Baiona <> Donostia"
+    },
+    "events": {
+      "section": "AGENDA",
+      "title": "Nabarmenduak",
+      "nord": "Iparraldea",
+      "sud": "Hegoaldea"
+    },
+    "quiz": {
+      "section": "QUIZ",
+      "title": "Zein ekitaldi zaizu egokitzen?",
+      "description": "Galdera batzuk zure nahietara egokitzen diren ekitaldiak aurkitzeko."
+    },
+    "about": {
+      "section": "KONTZEPTUA",
+      "title": "Limbo kontzeptua",
+      "description": "Euskal Herriko ipar eta hegoaldeko ekitaldiak biltzen dituen agenda kulturala.",
+      "mission": "Gure misioa: mugaz haraindiko kultura-deskubrimena erraztea.",
+      "values": {
+        "crossBorder": {
+          "title": "Mugatik harago",
+          "description": "Bi lurraldeen arteko kultur zubia"
+        },
+        "accessible": {
+          "title": "Eskuragarria",
+          "description": "Doan eta guztientzat irekia"
+        },
+        "diversity": {
+          "title": "Aniztasuna",
+          "description": "Eszena handietatik ekimen lokaletara"
+        }
+      }
+    }
+  },
+  "meta": {
+    "title": "Limbo – Euskal Herriko agenda kulturala · Baiona <> Donostia",
+    "description": "Erakusketa · Festa · Hitzaldia · Diseinua. Euskal Herriko mugaz gaindiko animalia soziala. Baiona <> Donostia"
+  }
+}

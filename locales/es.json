@@ -1,0 +1,60 @@
+{
+  "common": {
+    "nav": {
+      "agenda": "Agenda",
+      "quiz": "Quiz",
+      "about": "Acerca de",
+      "contact": "Contacto"
+    },
+    "actions": {
+      "learnMore": "Saber más",
+      "discover": "Descubrir la agenda",
+      "startQuiz": "Empezar el quiz",
+      "viewAll": "Ver todos los eventos"
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "AGENDA CULTURAL",
+      "title": "LIMBO",
+      "subtitle": "Expo · Fiesta · Charla · Diseño",
+      "description": "Animal social transfronterizo 🐈",
+      "location": "Bayona <> Donostia"
+    },
+    "events": {
+      "section": "AGENDA",
+      "title": "Destacados",
+      "nord": "Norte",
+      "sud": "Sur"
+    },
+    "quiz": {
+      "section": "QUIZ",
+      "title": "¿Qué evento te corresponde?",
+      "description": "Algunas preguntas para descubrir los eventos que coinciden con tus deseos."
+    },
+    "about": {
+      "section": "CONCEPTO",
+      "title": "El concepto Limbo",
+      "description": "Una agenda cultural que reúne los eventos del País Vasco norte y sur.",
+      "mission": "Nuestra misión: facilitar el descubrimiento cultural más allá de las fronteras.",
+      "values": {
+        "crossBorder": {
+          "title": "Transfronterizo",
+          "description": "Un puente cultural entre dos territorios"
+        },
+        "accessible": {
+          "title": "Accesible",
+          "description": "Gratis y abierto a todos"
+        },
+        "diversity": {
+          "title": "Diversidad",
+          "description": "De grandes escenarios a iniciativas locales"
+        }
+      }
+    }
+  },
+  "meta": {
+    "title": "Limbo – Agenda cultural País Vasco · Bayona <> Donostia",
+    "description": "Expo · Fiesta · Charla · Diseño. Animal social transfronterizo del País Vasco. Bayona <> Donostia"
+  }
+}

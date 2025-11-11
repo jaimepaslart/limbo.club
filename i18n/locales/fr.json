@@ -1,0 +1,60 @@
+{
+  "common": {
+    "nav": {
+      "agenda": "Agenda",
+      "quiz": "Quiz",
+      "proposeEvent": "Proposer un événement",
+      "about": "À propos"
+    },
+    "actions": {
+      "learnMore": "En savoir plus",
+      "discover": "Découvrir l'agenda",
+      "startQuiz": "Commencer le quiz",
+      "viewAll": "Voir tous les événements"
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "AGENDA KULTURALA",
+      "title": "LIMBO",
+      "subtitle": "Expo · Party · Lecture · Design",
+      "description": "Animal social transfrontalier 🐈",
+      "location": "Baiona <> Donostia"
+    },
+    "events": {
+      "section": "AGENDA",
+      "title": "À la une",
+      "nord": "Nord",
+      "sud": "Sud"
+    },
+    "quiz": {
+      "section": "QUIZ",
+      "title": "Quel événement te correspond ?",
+      "description": "Quelques questions pour découvrir les événements qui matchent avec tes envies."
+    },
+    "about": {
+      "section": "CONCEPT",
+      "title": "Le concept Limbo",
+      "description": "Un agenda culturel qui rassemble les événements du Pays Basque nord et sud.",
+      "mission": "Notre mission : faciliter la découverte culturelle au-delà des frontières.",
+      "values": {
+        "crossBorder": {
+          "title": "Transfrontalier",
+          "description": "Un pont culturel entre deux territoires"
+        },
+        "accessible": {
+          "title": "Accessible",
+          "description": "Gratuit et ouvert à tous"
+        },
+        "diversity": {
+          "title": "Diversité",
+          "description": "De grandes scènes aux initiatives locales"
+        }
+      }
+    }
+  },
+  "meta": {
+    "title": "Limbo – Agenda kulturala Pays Basque · Baiona <> Donostia",
+    "description": "Expo · Party · Lecture · Design. Animal social transfrontalier du Pays Basque. Baiona <> Donostia"
+  }
+}
