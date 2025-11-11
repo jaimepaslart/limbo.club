@@ -4,9 +4,7 @@
       <div class="flex items-center justify-between h-24">
         <!-- Logo -->
         <NuxtLink to="/" class="group">
-          <span class="text-xl font-display font-bold text-light tracking-tight group-hover:text-primary transition-colors">
-            LIMBO
-          </span>
+          <Logo size="sm" class="transition-colors group-hover:text-primary" />
         </NuxtLink>
 
         <!-- Desktop Navigation -->
