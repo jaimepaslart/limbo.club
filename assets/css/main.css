@@ -29,6 +29,23 @@
   }
 }
 
+/* Force pointer events on all interactive elements */
+button,
+a,
+input,
+select,
+textarea,
+label,
+[role="button"],
+[onclick],
+[type="button"],
+[type="submit"],
+[type="radio"],
+[type="checkbox"] {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
 @layer utilities {
   .line-clamp-2 {
     display: -webkit-box;

@@ -81,6 +81,17 @@ const navItems = computed(() => [
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Force pointer events on interactive elements */
+:deep(button),
+:deep(a),
+:deep(input),
+:deep(select),
+:deep(textarea) {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 1;
+}
+
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: all 0.3s ease;
