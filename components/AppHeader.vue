@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 header-bg backdrop-blur-md">
+  <header class="fixed top-0 left-0 right-0 header-bg backdrop-blur-md" style="z-index: 200;">
     <nav class="container mx-auto px-6 lg:px-12">
       <div class="flex items-center justify-between h-24">
         <!-- Logo -->

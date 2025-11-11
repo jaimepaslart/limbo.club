@@ -23,7 +23,7 @@
       <div
         v-if="isOpen"
         class="absolute right-0 top-full mt-2 py-2 min-w-[120px] bg-dark-light border border-white/10 rounded-lg shadow-xl"
-        style="z-index: 101;"
+        style="z-index: 300; pointer-events: auto !important;"
       >
         <button
           v-for="locale in availableLocales"

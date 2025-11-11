@@ -7,7 +7,7 @@
     <BauhausShapes />
 
     <AppHeader />
-    <main class="flex-1 pt-20 relative z-10">
+    <main class="flex-1 pt-20 relative" style="z-index: 100;">
       <slot />
     </main>
     <AppFooter />
