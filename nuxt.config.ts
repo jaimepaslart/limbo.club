@@ -75,5 +75,9 @@ export default defineNuxtConfig({
     // Variables privées (seulement accessibles côté serveur)
     resendApiKey: process.env.NUXT_RESEND_API_KEY,
     contactEmail: process.env.NUXT_CONTACT_EMAIL
+  },
+
+  nitro: {
+    preset: 'netlify'
   }
 })
