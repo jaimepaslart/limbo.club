@@ -53,6 +53,27 @@
       }
     }
   },
+  "contact": {
+    "section": "CONTACT",
+    "title": "Contactez-nous",
+    "description": "Une question ? Une suggestion ? Écrivez-nous, nous serons ravis d'échanger avec vous.",
+    "social": "Réseaux sociaux",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Votre message...",
+      "send": "Envoyer",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès ! Nous vous répondrons bientôt."
+    },
+    "meta": {
+      "title": "Contact – Limbo",
+      "description": "Contactez l'équipe Limbo pour toute question ou suggestion."
+    }
+  },
   "meta": {
     "title": "Limbo – Agenda kulturala Pays Basque · Baiona <> Donostia",
     "description": "Expo · Party · Lecture · Design. Animal social transfrontalier du Pays Basque. Baiona <> Donostia"
