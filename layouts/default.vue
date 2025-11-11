@@ -30,7 +30,7 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  pointer-events: none;
+  pointer-events: none !important;
   background:
     radial-gradient(ellipse at 20% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(192, 38, 211, 0.12) 0%, transparent 50%),
