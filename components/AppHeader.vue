@@ -1,22 +1,22 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-white/10">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md">
+    <nav class="container mx-auto px-6 lg:px-12">
+      <div class="flex items-center justify-between h-24">
         <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center space-x-3 group">
-          <span class="text-2xl sm:text-3xl font-display font-bold text-light tracking-tight group-hover:text-primary transition-colors">
+        <NuxtLink to="/" class="group">
+          <span class="text-xl font-display font-bold text-light tracking-tight group-hover:text-primary transition-colors">
             LIMBO
           </span>
         </NuxtLink>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-8">
+        <div class="hidden md:flex items-center space-x-12">
           <NuxtLink
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="text-light/80 hover:text-primary transition-colors text-sm font-medium tracking-wide"
-            active-class="text-primary"
+            class="text-light/60 hover:text-light transition-colors text-sm uppercase tracking-wider font-medium"
+            active-class="text-light"
           >
             {{ item.label }}
           </NuxtLink>
@@ -25,25 +25,10 @@
         <!-- Mobile Menu Button -->
         <button
           @click="mobileMenuOpen = !mobileMenuOpen"
-          class="md:hidden text-light p-2 hover:text-primary transition-colors"
+          class="md:hidden text-light/60 hover:text-light transition-colors"
           aria-label="Toggle menu"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              v-if="!mobileMenuOpen"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-            <path
-              v-else
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <span class="text-sm uppercase tracking-wider">{{ mobileMenuOpen ? 'Fermer' : 'Menu' }}</span>
         </button>
       </div>
 
@@ -51,14 +36,14 @@
       <Transition name="slide-fade">
         <div
           v-if="mobileMenuOpen"
-          class="md:hidden py-4 border-t border-white/10"
+          class="md:hidden py-8 border-t border-white/5"
         >
           <NuxtLink
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="block py-3 text-light/80 hover:text-primary transition-colors text-base font-medium"
-            active-class="text-primary"
+            class="block py-4 text-light/60 hover:text-light transition-colors text-lg uppercase tracking-wider font-medium"
+            active-class="text-light"
             @click="mobileMenuOpen = false"
           >
             {{ item.label }}

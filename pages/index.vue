@@ -1,105 +1,136 @@
 <template>
   <div>
-    <!-- Hero Section -->
-    <section class="relative py-20 md:py-32 overflow-hidden">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-light mb-6 tracking-tight animate-fade-in">
+    <!-- Hero Section - Full Screen -->
+    <section class="min-h-screen flex items-center justify-center relative">
+      <div class="container mx-auto px-6 lg:px-12">
+        <div class="max-w-6xl mx-auto">
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-8">INTRO</p>
+          <h1 class="text-7xl md:text-8xl lg:text-9xl font-display font-bold text-light mb-12 leading-[0.9] tracking-tighter">
             LIMBO
           </h1>
-          <p class="text-xl md:text-2xl text-light/80 mb-4 animate-slide-up">
-            Agenda culturel transfrontalier
+          <p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-16 max-w-3xl font-light">
+            Agenda culturel transfrontalier<br />
+            <span class="text-primary">Pays Basque nord & sud</span>
           </p>
-          <p class="text-lg md:text-xl text-primary/90 mb-12 animate-slide-up">
-            Pays Basque nord & sud
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
-            <PrimaryButton to="/agenda" variant="primary" size="lg">
-              Découvrir l'agenda
-            </PrimaryButton>
-            <PrimaryButton to="/quiz" variant="outline" size="lg">
-              Quel événement pour moi ?
-            </PrimaryButton>
+          <div class="flex flex-col sm:flex-row gap-6">
+            <NuxtLink
+              to="/agenda"
+              class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
+            >
+              <span class="mr-3">Découvrir l'agenda</span>
+              <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+            </NuxtLink>
           </div>
         </div>
       </div>
-
-      <!-- Decorative elements -->
-      <div class="absolute inset-0 -z-10 overflow-hidden">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </div>
     </section>
 
-    <!-- Featured Events -->
-    <section class="py-16 md:py-24">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle subtitle="Les événements phares de ce mois-ci">
-          À la une
-        </SectionTitle>
-
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          <EventCard
-            v-for="event in featuredEvents"
-            :key="event.id"
-            :event="event"
-          />
-        </div>
-
-        <div class="mt-12 text-center">
-          <PrimaryButton to="/agenda" variant="secondary">
-            Voir tous les événements
-          </PrimaryButton>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quiz CTA -->
-    <section class="py-16 md:py-24 bg-dark-lighter">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-display font-bold text-light mb-6">
-            Quel événement te correspond ?
+    <!-- Events Section - Full Screen -->
+    <section class="min-h-screen flex items-center py-24 border-t border-white/5">
+      <div class="container mx-auto px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto">
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">AGENDA</p>
+          <h2 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-light mb-20 leading-tight">
+            À la une
           </h2>
-          <p class="text-lg text-light/70 mb-8">
-            Réponds à quelques questions et découvre les événements qui matchent avec tes envies.
-          </p>
-          <PrimaryButton to="/quiz" variant="primary" size="lg">
-            Commencer le quiz
-          </PrimaryButton>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            <div
+              v-for="event in featuredEvents"
+              :key="event.id"
+              class="group"
+            >
+              <NuxtLink
+                :to="`/agenda`"
+                class="block"
+              >
+                <div class="mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <TagPill :label="event.type" variant="primary" />
+                </div>
+                <h3 class="text-2xl md:text-3xl font-display font-bold text-light mb-3 group-hover:text-primary transition-colors">
+                  {{ event.title }}
+                </h3>
+                <p class="text-light/50 mb-2">{{ formatDate(event.date) }}</p>
+                <p class="text-light/40 text-sm">{{ event.city }} · {{ event.side === 'nord' ? 'Nord' : 'Sud' }}</p>
+              </NuxtLink>
+            </div>
+          </div>
+
+          <div class="mt-20">
+            <NuxtLink
+              to="/agenda"
+              class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
+            >
+              <span class="mr-3">Voir tous les événements</span>
+              <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="py-16 md:py-24">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto">
-          <SectionTitle align="center" subtitle="Découvrez la culture des deux côtés de la frontière">
-            Le concept Limbo
-          </SectionTitle>
+    <!-- Quiz Section - Full Screen -->
+    <section class="min-h-screen flex items-center border-t border-white/5">
+      <div class="container mx-auto px-6 lg:px-12">
+        <div class="max-w-4xl mx-auto">
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">QUIZ</p>
+          <h2 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-light mb-12 leading-tight">
+            Quel événement<br />te correspond ?
+          </h2>
+          <p class="text-xl md:text-2xl text-light/50 mb-16 max-w-2xl font-light">
+            Quelques questions pour découvrir les événements qui matchent avec tes envies.
+          </p>
+          <NuxtLink
+            to="/quiz"
+            class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
+          >
+            <span class="mr-3">Commencer le quiz</span>
+            <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
 
-          <div class="mt-12 space-y-6 text-light/70 text-lg leading-relaxed">
-            <p>
-              <span class="text-primary font-semibold">Limbo</span> est un agenda culturel transfrontalier
-              qui rassemble les événements du Pays Basque nord et sud.
-            </p>
-            <p>
-              Notre mission : faciliter la découverte culturelle au-delà des frontières,
-              promouvoir les échanges entre les deux côtés et valoriser la richesse
-              de l'agenda culturel basque dans sa globalité.
-            </p>
-            <p>
-              Concerts, expositions, festivals, ateliers... Explorez l'agenda et
-              laissez-vous inspirer par la diversité culturelle du Pays Basque.
-            </p>
+    <!-- About Section - Full Screen -->
+    <section class="min-h-screen flex items-center border-t border-white/5">
+      <div class="container mx-auto px-6 lg:px-12">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-12">CONCEPT</p>
+          <h2 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-light mb-16 leading-tight">
+            Le concept<br />Limbo
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+            <div>
+              <p class="text-xl text-light/60 leading-relaxed mb-8 font-light">
+                Un agenda culturel qui rassemble les événements du Pays Basque nord et sud.
+              </p>
+              <p class="text-light/40 leading-relaxed font-light">
+                Notre mission : faciliter la découverte culturelle au-delà des frontières.
+              </p>
+            </div>
+            <div class="space-y-8">
+              <div>
+                <p class="text-sm uppercase tracking-wider text-primary mb-2">Transfrontalier</p>
+                <p class="text-light/50 font-light">Un pont culturel entre deux territoires</p>
+              </div>
+              <div>
+                <p class="text-sm uppercase tracking-wider text-primary mb-2">Accessible</p>
+                <p class="text-light/50 font-light">Gratuit et ouvert à tous</p>
+              </div>
+              <div>
+                <p class="text-sm uppercase tracking-wider text-primary mb-2">Diversité</p>
+                <p class="text-light/50 font-light">De grandes scènes aux initiatives locales</p>
+              </div>
+            </div>
           </div>
-
-          <div class="mt-12 text-center">
-            <PrimaryButton to="/a-propos" variant="outline">
-              En savoir plus
-            </PrimaryButton>
+          <div class="mt-16">
+            <NuxtLink
+              to="/a-propos"
+              class="group inline-flex items-center text-light text-lg hover:text-primary transition-colors"
+            >
+              <span class="mr-3">En savoir plus</span>
+              <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -110,6 +141,15 @@
 <script setup lang="ts">
 const { getFeaturedEvents } = useEvents()
 const featuredEvents = getFeaturedEvents()
+
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString)
+  return new Intl.DateTimeFormat('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(date)
+}
 
 useHead({
   title: 'Limbo – Agenda culturel transfrontalier Pays Basque nord & sud',
