@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-24">
         <!-- Logo -->
         <NuxtLink to="/" class="group">
-          <Logo size="sm" class="transition-colors group-hover:text-primary" />
+          <Logo size="md" class="transition-colors group-hover:text-primary" />
         </NuxtLink>
 
         <!-- Desktop Navigation -->
