@@ -18,8 +18,11 @@
           >
             {{ item.label }}
           </NuxtLink>
-          <ClientOnly>
+          <ClientOnly fallback-tag="div">
             <LanguageSwitcher />
+            <template #fallback>
+              <div class="text-sm uppercase tracking-wider font-medium text-light/60">FR</div>
+            </template>
           </ClientOnly>
         </div>
 
@@ -52,8 +55,11 @@
             {{ item.label }}
           </NuxtLink>
           <div class="pt-4 mt-4 border-t border-white/5">
-            <ClientOnly>
+            <ClientOnly fallback-tag="div">
               <LanguageSwitcher />
+              <template #fallback>
+                <div class="text-sm uppercase tracking-wider font-medium text-light/60">FR</div>
+              </template>
             </ClientOnly>
           </div>
         </div>
