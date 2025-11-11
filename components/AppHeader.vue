@@ -18,7 +18,9 @@
           >
             {{ item.label }}
           </NuxtLink>
-          <LanguageSwitcher />
+          <ClientOnly>
+            <LanguageSwitcher />
+          </ClientOnly>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -50,7 +52,9 @@
             {{ item.label }}
           </NuxtLink>
           <div class="pt-4 mt-4 border-t border-white/5">
-            <LanguageSwitcher />
+            <ClientOnly>
+              <LanguageSwitcher />
+            </ClientOnly>
           </div>
         </div>
       </Transition>
