@@ -1,9 +1,10 @@
 <template>
-  <div class="relative" ref="dropdownRef">
+  <div v-if="mounted" class="relative language-switcher" ref="dropdownRef">
     <button
-      @click="toggleDropdown"
+      @click.stop="toggleDropdown"
       class="flex items-center space-x-2 text-light/60 hover:text-light transition-colors text-sm uppercase tracking-wider font-medium"
       aria-label="Change language"
+      style="pointer-events: auto !important; position: relative; z-index: 100;"
     >
       <span>{{ currentLocale.code.toUpperCase() }}</span>
       <svg
@@ -22,13 +23,15 @@
       <div
         v-if="isOpen"
         class="absolute right-0 top-full mt-2 py-2 min-w-[120px] bg-dark-light border border-white/10 rounded-lg shadow-xl"
+        style="z-index: 101;"
       >
         <button
           v-for="locale in availableLocales"
           :key="locale.code"
-          @click="switchLanguage(locale.code)"
+          @click.stop="switchLanguage(locale.code)"
           class="w-full px-4 py-2 text-left text-sm text-light/60 hover:text-light hover:bg-white/5 transition-colors uppercase tracking-wider"
           :class="{ 'text-primary': currentLocale.code === locale.code }"
+          style="pointer-events: auto !important;"
         >
           {{ locale.name }}
         </button>
@@ -43,7 +46,7 @@ const switchLocalePath = useSwitchLocalePath()
 
 const isOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
-const isMounted = ref(false)
+const mounted = ref(false)
 
 const currentLocale = computed(() => {
   return locales.value.find(l => l.code === locale.value) || locales.value[0]
@@ -54,48 +57,50 @@ const availableLocales = computed(() => {
 })
 
 const toggleDropdown = () => {
-  if (!isMounted.value) return
-
   isOpen.value = !isOpen.value
 
-  // Si on ouvre le dropdown, ajouter le listener après le prochain tick
-  if (isOpen.value && process.client) {
+  if (isOpen.value) {
     nextTick(() => {
-      document.addEventListener('click', handleClickOutside, { once: false })
+      document.addEventListener('click', handleClickOutside)
     })
   }
 }
 
 const switchLanguage = async (code: string) => {
-  if (process.client) {
-    document.removeEventListener('click', handleClickOutside)
-  }
-  await navigateTo(switchLocalePath(code))
+  document.removeEventListener('click', handleClickOutside)
   isOpen.value = false
+  await navigateTo(switchLocalePath(code))
 }
 
 // Close dropdown when clicking outside
 const handleClickOutside = (event: MouseEvent) => {
   if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
     isOpen.value = false
-    if (process.client) {
-      document.removeEventListener('click', handleClickOutside)
-    }
+    document.removeEventListener('click', handleClickOutside)
   }
 }
 
 onMounted(() => {
-  isMounted.value = true
+  mounted.value = true
 })
 
 onBeforeUnmount(() => {
-  if (process.client) {
-    document.removeEventListener('click', handleClickOutside)
-  }
+  document.removeEventListener('click', handleClickOutside)
 })
 </script>
 
 <style scoped>
+.language-switcher {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 100;
+}
+
+.language-switcher button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.2s ease;
