@@ -25,12 +25,26 @@ Permet à Claude d'interagir avec GitHub (repos, issues, PRs).
 - **Configuration requise**: Définissez votre token GitHub dans `GITHUB_PERSONAL_ACCESS_TOKEN`
 - **Obtenir un token**: https://github.com/settings/tokens
 
+### 4. Git
+Permet à Claude d'effectuer des opérations Git sur le dépôt local.
+- **Commande**: `npx @modelcontextprotocol/server-git`
+- **Pas de configuration supplémentaire requise**
+
 ## Configuration des agents
 
-Les agents sont automatiquement disponibles dans Claude Code :
+### Agents intégrés Claude Code
+
+Les agents suivants sont automatiquement disponibles dans Claude Code :
 - **general-purpose**: Agent polyvalent pour les tâches complexes
 - **Explore**: Agent spécialisé pour l'exploration du code
 - **Plan**: Agent pour la planification de tâches
+
+### Agents personnalisés
+
+Les agents suivants sont configurés dans `.claude/agents/` :
+- **seo-specialist**: Spécialiste SEO pour l'optimisation du référencement
+- **design-aesthetic**: Expert en design et esthétique web
+- **frontend-developer**: Développeur frontend spécialisé
 
 ## Installation et configuration
 
