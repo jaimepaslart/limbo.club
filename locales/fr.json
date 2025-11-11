@@ -3,8 +3,8 @@
     "nav": {
       "agenda": "Agenda",
       "quiz": "Quiz",
-      "about": "À propos",
-      "contact": "Contact"
+      "proposeEvent": "Proposer un événement",
+      "about": "À propos"
     },
     "actions": {
       "learnMore": "En savoir plus",
@@ -51,6 +51,27 @@
           "description": "De grandes scènes aux initiatives locales"
         }
       }
+    }
+  },
+  "contact": {
+    "section": "CONTACT",
+    "title": "Contactez-nous",
+    "description": "Une question ? Une suggestion ? Écrivez-nous, nous serons ravis d'échanger avec vous.",
+    "social": "Réseaux sociaux",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre.email{'@'}exemple.com",
+      "message": "Message",
+      "messagePlaceholder": "Votre message...",
+      "send": "Envoyer",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès ! Nous vous répondrons bientôt."
+    },
+    "meta": {
+      "title": "Contact – Limbo",
+      "description": "Contactez l'équipe Limbo pour toute question ou suggestion."
     }
   },
   "meta": {

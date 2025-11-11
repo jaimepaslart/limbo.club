@@ -62,7 +62,7 @@
       "name": "Nombre",
       "namePlaceholder": "Tu nombre",
       "email": "Email",
-      "emailPlaceholder": "tu@email.com",
+      "emailPlaceholder": "tu.email{'@'}ejemplo.com",
       "message": "Mensaje",
       "messagePlaceholder": "Tu mensaje...",
       "send": "Enviar",

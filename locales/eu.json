@@ -3,8 +3,8 @@
     "nav": {
       "agenda": "Agenda",
       "quiz": "Quiz",
-      "about": "Honi buruz",
-      "contact": "Kontaktua"
+      "proposeEvent": "Ekitaldia proposatu",
+      "about": "Honi buruz"
     },
     "actions": {
       "learnMore": "Gehiago jakin",
@@ -51,6 +51,27 @@
           "description": "Eszena handietatik ekimen lokaletara"
         }
       }
+    }
+  },
+  "contact": {
+    "section": "KONTAKTUA",
+    "title": "Jarri gurekin harremanetan",
+    "description": "Galdera bat? Iradokizun bat? Idatzi iezaguzu, pozik hitz egingo dugu zurekin.",
+    "social": "Sare sozialak",
+    "form": {
+      "name": "Izena",
+      "namePlaceholder": "Zure izena",
+      "email": "Emaila",
+      "emailPlaceholder": "zure.emaila{'@'}adibidez.com",
+      "message": "Mezua",
+      "messagePlaceholder": "Zure mezua...",
+      "send": "Bidali",
+      "sending": "Bidaltzen...",
+      "success": "Mezua ondo bidali da! Laster erantzungo dizugu."
+    },
+    "meta": {
+      "title": "Kontaktua – Limbo",
+      "description": "Jarri harremanetan Limbo taldearekin edozein galdera edo iradokizunetarako."
     }
   },
   "meta": {
