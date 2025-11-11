@@ -18,12 +18,7 @@
           >
             {{ item.label }}
           </NuxtLink>
-          <ClientOnly fallback-tag="div">
-            <LanguageSwitcher />
-            <template #fallback>
-              <div class="text-sm uppercase tracking-wider font-medium text-light/60">FR</div>
-            </template>
-          </ClientOnly>
+          <LanguageSwitcher />
         </div>
 
         <!-- Mobile Menu Button -->
@@ -55,12 +50,7 @@
             {{ item.label }}
           </NuxtLink>
           <div class="pt-4 mt-4 border-t border-white/5">
-            <ClientOnly fallback-tag="div">
-              <LanguageSwitcher />
-              <template #fallback>
-                <div class="text-sm uppercase tracking-wider font-medium text-light/60">FR</div>
-              </template>
-            </ClientOnly>
+            <LanguageSwitcher />
           </div>
         </div>
       </Transition>
