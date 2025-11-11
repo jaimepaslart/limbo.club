@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen flex flex-col limbo-flames-bg relative">
     <!-- Fond de flammes abstraites -->
-    <div class="limbo-flames-overlay"></div>
+    <!-- <div class="limbo-flames-overlay"></div> -->
 
     <!-- Formes Bauhaus -->
-    <BauhausShapes />
+    <!-- <BauhausShapes /> -->
 
     <AppHeader />
     <main class="flex-1 pt-20 relative" style="z-index: 100;">

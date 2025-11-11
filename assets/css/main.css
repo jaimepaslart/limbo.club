@@ -241,6 +241,7 @@ h1, h2, h3 {
 }
 
 /* Grille Bauhaus subtile sur tout le site */
+/* TEMPORAIREMENT DÉSACTIVÉ POUR DEBUG
 body::after {
   content: '';
   position: fixed;
@@ -256,6 +257,7 @@ body::after {
   z-index: 0;
   opacity: 0.5;
 }
+*/
 
 /* Classe pour désactiver les animations si nécessaire */
 @media (prefers-reduced-motion: reduce) {
