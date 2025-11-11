@@ -22,6 +22,18 @@
     color: var(--color-text);
     @apply font-sans;
     transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: none;
+  }
+
+  a, button, input, textarea, select {
+    cursor: none;
+  }
+
+  /* Restore default cursor on mobile/touch devices */
+  @media (pointer: coarse) {
+    body, a, button, input, textarea, select {
+      cursor: auto;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {

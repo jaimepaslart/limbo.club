@@ -97,11 +97,22 @@ const animate = () => {
 }
 
 onMounted(() => {
+  // Vérifier que nous sommes bien côté client
+  if (typeof window === 'undefined') return
+
+  // Vérifier le support du pointeur
+  if (!window.matchMedia('(pointer: fine)').matches) {
+    // Cacher le curseur sur mobile/touch
+    return
+  }
+
   window.addEventListener('mousemove', handleMouseMove, { passive: true })
   animationFrame = requestAnimationFrame(animate)
 })
 
 onBeforeUnmount(() => {
+  if (typeof window === 'undefined') return
+
   window.removeEventListener('mousemove', handleMouseMove)
   if (animationFrame) {
     cancelAnimationFrame(animationFrame)
@@ -118,7 +129,6 @@ onBeforeUnmount(() => {
   height: 100%;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
 }
 
 /* Curseur principal - petit point */
@@ -126,12 +136,13 @@ onBeforeUnmount(() => {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: white;
+  background: rgba(168, 85, 247, 0.9);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: transform 0.1s ease;
   will-change: transform;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
 /* Curseur extérieur - cercle qui suit avec délai */
@@ -139,7 +150,7 @@ onBeforeUnmount(() => {
   position: absolute;
   width: 40px;
   height: 40px;
-  border: 2px solid white;
+  border: 2px solid rgba(168, 85, 247, 0.6);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
