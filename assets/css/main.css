@@ -235,7 +235,7 @@ body::after {
     linear-gradient(rgba(168, 85, 247, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(168, 85, 247, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 0;
   opacity: 0.5;
 }
