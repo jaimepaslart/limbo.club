@@ -46,6 +46,7 @@ const switchLocalePath = useSwitchLocalePath()
 
 const isOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
+const isMounted = ref(false)
 
 const currentLocale = computed(() => {
   return locales.value.find(l => l.code === locale.value) || locales.value[0]
@@ -56,17 +57,23 @@ const availableLocales = computed(() => {
 })
 
 const toggleDropdown = () => {
+  if (!isMounted.value) return
+
   isOpen.value = !isOpen.value
 
-  if (isOpen.value) {
+  if (isOpen.value && process.client) {
     nextTick(() => {
-      document.addEventListener('click', handleClickOutside)
+      document.addEventListener('click', handleClickOutside, { once: false })
     })
+  } else if (process.client) {
+    document.removeEventListener('click', handleClickOutside)
   }
 }
 
 const switchLanguage = async (code: string) => {
-  document.removeEventListener('click', handleClickOutside)
+  if (process.client) {
+    document.removeEventListener('click', handleClickOutside)
+  }
   isOpen.value = false
   await navigateTo(switchLocalePath(code))
 }
@@ -75,12 +82,20 @@ const switchLanguage = async (code: string) => {
 const handleClickOutside = (event: MouseEvent) => {
   if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
     isOpen.value = false
-    document.removeEventListener('click', handleClickOutside)
+    if (process.client) {
+      document.removeEventListener('click', handleClickOutside)
+    }
   }
 }
 
+onMounted(() => {
+  isMounted.value = true
+})
+
 onBeforeUnmount(() => {
-  document.removeEventListener('click', handleClickOutside)
+  if (process.client) {
+    document.removeEventListener('click', handleClickOutside)
+  }
 })
 </script>
 
