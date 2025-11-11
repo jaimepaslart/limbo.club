@@ -5,7 +5,8 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/tailwindcss',
-    '@nuxt/fonts'
+    '@nuxt/fonts',
+    'nuxt-mcp'
   ],
 
   app: {
@@ -35,5 +36,11 @@ export default defineNuxtConfig({
       { name: 'Space Grotesk', provider: 'google' },
       { name: 'Inter', provider: 'google' }
     ]
+  },
+
+  runtimeConfig: {
+    // Variables privées (seulement accessibles côté serveur)
+    resendApiKey: process.env.NUXT_RESEND_API_KEY,
+    contactEmail: process.env.NUXT_CONTACT_EMAIL
   }
 })

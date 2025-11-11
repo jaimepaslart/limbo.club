@@ -8,6 +8,27 @@
         Proposer un événement
       </SectionTitle>
 
+      <!-- Error Message -->
+      <Transition name="fade">
+        <div
+          v-if="errorMessage"
+          class="mt-12 bg-red-500/20 border border-red-500/50 rounded-lg p-6 text-center"
+        >
+          <svg class="w-16 h-16 mx-auto text-red-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="text-2xl font-display font-bold text-light mb-2">
+            Erreur
+          </h3>
+          <p class="text-light/70 mb-6">
+            {{ errorMessage }}
+          </p>
+          <PrimaryButton variant="outline" @click="errorMessage = ''">
+            Réessayer
+          </PrimaryButton>
+        </div>
+      </Transition>
+
       <!-- Success Message -->
       <Transition name="fade">
         <div
@@ -30,7 +51,7 @@
       </Transition>
 
       <!-- Form -->
-      <form v-if="!showSuccess" class="mt-12 space-y-6" @submit.prevent="handleSubmit">
+      <form v-if="!showSuccess && !errorMessage" class="mt-12 space-y-6" @submit.prevent="handleSubmit">
         <!-- Event Name -->
         <div>
           <label for="title" class="block text-sm font-medium text-light/80 mb-2">
@@ -192,8 +213,10 @@
             type="submit"
             size="lg"
             class="w-full"
+            :disabled="isSubmitting"
           >
-            Envoyer ma proposition
+            <span v-if="isSubmitting">Envoi en cours...</span>
+            <span v-else>Envoyer ma proposition</span>
           </PrimaryButton>
         </div>
 
@@ -235,25 +258,33 @@ const formData = ref<FormData>({
 })
 
 const showSuccess = ref(false)
+const isSubmitting = ref(false)
+const errorMessage = ref('')
 
-const handleSubmit = () => {
-  // TODO: Connect to API when backend is ready
-  // For now, just log the data and show success message
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  errorMessage.value = ''
 
-  console.log('Event submission:', formData.value)
+  try {
+    await $fetch('/api/events/submit', {
+      method: 'POST',
+      body: formData.value
+    })
 
-  // Show success message
-  showSuccess.value = true
+    // Show success message
+    showSuccess.value = true
 
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  } catch (error: any) {
+    console.error('Erreur lors de la soumission:', error)
+    errorMessage.value = error.data?.statusMessage || 'Une erreur est survenue. Veuillez réessayer.'
 
-  // TODO: Send data to backend API
-  // Example:
-  // await $fetch('/api/events/submit', {
-  //   method: 'POST',
-  //   body: formData.value
-  // })
+    // Scroll to top to show error
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
 const resetForm = () => {
@@ -270,6 +301,7 @@ const resetForm = () => {
     email: ''
   }
   showSuccess.value = false
+  errorMessage.value = ''
 }
 
 useHead({

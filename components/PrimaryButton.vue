@@ -6,6 +6,7 @@
     :type="type"
     :class="buttonClasses"
     :disabled="disabled"
+    class="flame-button"
   >
     <slot />
   </component>
@@ -35,7 +36,7 @@ const tag = computed(() => {
 })
 
 const buttonClasses = computed(() => {
-  const base = 'inline-flex items-center justify-center font-medium tracking-wide transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark disabled:opacity-50 disabled:cursor-not-allowed'
+  const base = 'inline-flex items-center justify-center font-medium tracking-wide transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden'
 
   const sizes = {
     sm: 'px-4 py-2 text-sm',
@@ -52,3 +53,39 @@ const buttonClasses = computed(() => {
   return `${base} ${sizes[props.size]} ${variants[props.variant]}`
 })
 </script>
+
+<style scoped>
+.flame-button {
+  position: relative;
+}
+
+.flame-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg,
+    rgba(168, 85, 247, 0.6) 0%,
+    rgba(192, 38, 211, 0.5) 50%,
+    rgba(168, 85, 247, 0.6) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.flame-button:hover::before {
+  opacity: 0.8;
+  animation: flame-glow 2s ease-in-out infinite;
+}
+
+.flame-button:hover {
+  animation: ember-rise 2s ease-in-out infinite;
+}
+
+.flame-button:active {
+  transform: scale(0.98);
+}
+</style>
