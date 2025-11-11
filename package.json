@@ -1,0 +1,27 @@
+{
+  "name": "limbo-agenda",
+  "version": "1.0.0",
+  "description": "Agenda culturel transfrontalier Pays Basque nord & sud",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.10.2",
+    "nuxt": "^3.15.3",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3"
+  }
+}
