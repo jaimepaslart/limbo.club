@@ -16,6 +16,7 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "no-cache, no-store, must-revalidate"
 
 [[headers]]
   for = "/fonts/*"
@@ -23,6 +24,16 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/_nuxt/*"
+  for = "/_nuxt/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_nuxt/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_nuxt/builds/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
