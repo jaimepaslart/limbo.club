@@ -8,7 +8,7 @@
 
           <!-- Logo avec dégradé animé -->
           <div class="mb-12 logo-container">
-            <LogoSvg size="2xl" color="gradient" />
+            <LogoSvg size="3xl" color="gradient" />
           </div>
 
           <!-- Sous-titre avec animation typewriter -->

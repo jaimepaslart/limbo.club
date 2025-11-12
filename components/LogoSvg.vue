@@ -8,16 +8,19 @@
   >
     <!-- Définition du dégradé SVG animé -->
     <defs>
-      <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#A855F7;stop-opacity:1">
-          <animate attributeName="stop-color" values="#A855F7; #EC4899; #F59E0B; #A855F7" dur="8s" repeatCount="indefinite" />
-        </stop>
-        <stop offset="50%" style="stop-color:#EC4899;stop-opacity:1">
-          <animate attributeName="stop-color" values="#EC4899; #F59E0B; #A855F7; #EC4899" dur="8s" repeatCount="indefinite" />
-        </stop>
-        <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1">
-          <animate attributeName="stop-color" values="#F59E0B; #A855F7; #EC4899; #F59E0B" dur="8s" repeatCount="indefinite" />
-        </stop>
+      <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(0 0.5 0.5)">
+        <stop offset="0%" style="stop-color:#A855F7;stop-opacity:1" />
+        <stop offset="33%" style="stop-color:#EC4899;stop-opacity:1" />
+        <stop offset="66%" style="stop-color:#F59E0B;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#A855F7;stop-opacity:1" />
+        <animateTransform
+          attributeName="gradientTransform"
+          type="rotate"
+          from="0 0.5 0.5"
+          to="360 0.5 0.5"
+          dur="12s"
+          repeatCount="indefinite"
+        />
       </linearGradient>
     </defs>
     <g :fill="fillStyle">
