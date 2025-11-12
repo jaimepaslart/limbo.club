@@ -3,8 +3,8 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
       <!-- Intro -->
       <div v-if="!showResults" class="text-center mb-12">
-        <SectionTitle align="center" subtitle="Réponds à quelques questions pour découvrir les événements qui te correspondent">
-          Quel événement te correspond ?
+        <SectionTitle align="center" :subtitle="t('quiz.intro.subtitle')">
+          {{ t('quiz.intro.title') }}
         </SectionTitle>
       </div>
 
@@ -13,7 +13,7 @@
         <!-- Question 1: Ambiance -->
         <div class="bg-dark-light border border-white/10 rounded-lg p-6">
           <label class="block text-lg font-display font-semibold text-light mb-4">
-            1. Quelle ambiance préfères-tu ?
+            {{ t('quiz.questions.q1.label') }}
           </label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <button
@@ -27,7 +27,7 @@
               ]"
               @click="answers.ambiance = option.value"
             >
-              <div class="font-medium">{{ option.label }}</div>
+              <div class="font-medium">{{ t(`quiz.questions.q1.options.${option.key}`) }}</div>
             </button>
           </div>
         </div>
@@ -35,7 +35,7 @@
         <!-- Question 2: Moment -->
         <div class="bg-dark-light border border-white/10 rounded-lg p-6">
           <label class="block text-lg font-display font-semibold text-light mb-4">
-            2. À quel moment de la journée ?
+            {{ t('quiz.questions.q2.label') }}
           </label>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <button
@@ -49,7 +49,7 @@
               ]"
               @click="answers.moment = option.value"
             >
-              {{ option.label }}
+              {{ t(`quiz.questions.q2.options.${option.key}`) }}
             </button>
           </div>
         </div>
@@ -57,7 +57,7 @@
         <!-- Question 3: Side -->
         <div class="bg-dark-light border border-white/10 rounded-lg p-6">
           <label class="block text-lg font-display font-semibold text-light mb-4">
-            3. De quel côté ?
+            {{ t('quiz.questions.q3.label') }}
           </label>
           <div class="grid grid-cols-3 gap-3">
             <button
@@ -71,7 +71,7 @@
               ]"
               @click="answers.side = option.value"
             >
-              {{ option.label }}
+              {{ t(`quiz.questions.q3.options.${option.key}`) }}
             </button>
           </div>
         </div>
@@ -79,7 +79,7 @@
         <!-- Question 4: Budget -->
         <div class="bg-dark-light border border-white/10 rounded-lg p-6">
           <label class="block text-lg font-display font-semibold text-light mb-4">
-            4. Budget ?
+            {{ t('quiz.questions.q4.label') }}
           </label>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <button
@@ -93,7 +93,7 @@
               ]"
               @click="answers.budget = option.value"
             >
-              {{ option.label }}
+              {{ t(`quiz.questions.q4.options.${option.key}`) }}
             </button>
           </div>
         </div>
@@ -101,7 +101,7 @@
         <!-- Question 5: Event Type -->
         <div class="bg-dark-light border border-white/10 rounded-lg p-6">
           <label class="block text-lg font-display font-semibold text-light mb-4">
-            5. Type d'événement préféré ?
+            {{ t('quiz.questions.q5.label') }}
           </label>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <button
@@ -115,7 +115,7 @@
               ]"
               @click="answers.eventType = option.value"
             >
-              {{ option.label }}
+              {{ t(`quiz.questions.q5.options.${option.key}`) }}
             </button>
           </div>
         </div>
@@ -127,7 +127,7 @@
             :disabled="!isFormComplete"
             @click="calculateResults"
           >
-            Voir mes recommandations
+            {{ t('quiz.actions.submit') }}
           </PrimaryButton>
         </div>
       </div>
@@ -136,7 +136,7 @@
       <div v-else class="space-y-12">
         <div class="text-center">
           <h2 class="text-3xl md:text-4xl font-display font-bold text-light mb-4">
-            Voici les événements pour toi !
+            {{ t('quiz.results.title') }}
           </h2>
           <p class="text-lg text-light/70">
             {{ getPersonalizedMessage() }}
@@ -155,10 +155,10 @@
         <!-- Actions -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <PrimaryButton variant="outline" @click="resetQuiz">
-            Refaire le quiz
+            {{ t('quiz.actions.reset') }}
           </PrimaryButton>
           <PrimaryButton to="/agenda">
-            Voir tous les événements
+            {{ t('quiz.actions.viewAll') }}
           </PrimaryButton>
         </div>
       </div>
@@ -169,6 +169,7 @@
 <script setup lang="ts">
 import type { QuizAnswers, EventSide, EventType, Event } from '~/types/event'
 
+const { t } = useI18n()
 const { events, filterEvents } = useEvents()
 
 const answers = ref<QuizAnswers>({})
@@ -176,40 +177,40 @@ const showResults = ref(false)
 const recommendedEvents = ref<Event[]>([])
 
 const ambianceOptions = [
-  { label: 'Intimiste', value: 'intimiste' },
-  { label: 'Club / Salle', value: 'club' },
-  { label: 'Plein air', value: 'plein-air' },
-  { label: 'Grande foule', value: 'populaire' },
+  { key: 'intimiste', value: 'intimiste' },
+  { key: 'club', value: 'club' },
+  { key: 'pleinAir', value: 'plein-air' },
+  { key: 'populaire', value: 'populaire' },
 ]
 
 const momentOptions = [
-  { label: 'Matin', value: 'matin' },
-  { label: 'Après-midi', value: 'après-midi' },
-  { label: 'Soir', value: 'soir' },
-  { label: 'Nuit', value: 'nuit' },
+  { key: 'matin', value: 'matin' },
+  { key: 'apresMidi', value: 'après-midi' },
+  { key: 'soir', value: 'soir' },
+  { key: 'nuit', value: 'nuit' },
 ]
 
 const sideOptions = [
-  { label: 'Nord', value: 'nord' as EventSide },
-  { label: 'Sud', value: 'sud' as EventSide },
-  { label: 'Peu importe', value: 'peu-importe' },
+  { key: 'nord', value: 'nord' as EventSide },
+  { key: 'sud', value: 'sud' as EventSide },
+  { key: 'peuImporte', value: 'peu-importe' },
 ]
 
 const budgetOptions = [
-  { label: 'Gratuit', value: 'gratuit' },
-  { label: 'Abordable', value: 'abordable' },
-  { label: 'Peu importe', value: 'peu-importe' },
+  { key: 'gratuit', value: 'gratuit' },
+  { key: 'abordable', value: 'abordable' },
+  { key: 'peuImporte', value: 'peu-importe' },
 ]
 
 const eventTypeOptions = [
-  { label: 'Concert', value: 'concert' as EventType },
-  { label: 'Expo', value: 'expo' as EventType },
-  { label: 'Festival', value: 'festival' as EventType },
-  { label: 'Atelier', value: 'atelier' as EventType },
-  { label: 'Cinéma', value: 'cinema' as EventType },
-  { label: 'Théâtre', value: 'theatre' as EventType },
-  { label: 'Danse', value: 'danse' as EventType },
-  { label: 'Conférence', value: 'conference' as EventType },
+  { key: 'concert', value: 'concert' as EventType },
+  { key: 'expo', value: 'expo' as EventType },
+  { key: 'festival', value: 'festival' as EventType },
+  { key: 'atelier', value: 'atelier' as EventType },
+  { key: 'cinema', value: 'cinema' as EventType },
+  { key: 'theatre', value: 'theatre' as EventType },
+  { key: 'danse', value: 'danse' as EventType },
+  { key: 'conference', value: 'conference' as EventType },
 ]
 
 const isFormComplete = computed(() => {
@@ -266,11 +267,7 @@ const calculateResults = () => {
 }
 
 const getPersonalizedMessage = () => {
-  const messages = [
-    'Nous avons sélectionné ces événements spécialement pour toi.',
-    'Ces événements correspondent parfaitement à tes préférences.',
-    'Voici notre sélection personnalisée selon tes goûts.',
-  ]
+  const messages = t('quiz.results.messages') as string[]
   return messages[Math.floor(Math.random() * messages.length)]
 }
 
@@ -282,11 +279,11 @@ const resetQuiz = () => {
 }
 
 useHead({
-  title: 'Quiz – Quel événement te correspond ? – Limbo',
+  title: t('quiz.meta.title'),
   meta: [
     {
       name: 'description',
-      content: 'Réponds à notre quiz pour découvrir les événements culturels qui correspondent à tes envies.'
+      content: t('quiz.meta.description')
     }
   ]
 })

@@ -77,5 +77,133 @@
   "meta": {
     "title": "Limbo – Euskal Herriko agenda kulturala · Baiona <> Donostia",
     "description": "Erakusketa · Festa · Hitzaldia · Diseinua. Euskal Herriko mugaz gaindiko animalia soziala. Baiona <> Donostia"
+  },
+  "about": {
+    "sectionTitle": {
+      "subtitle": "Bi lurraldeen arteko kultur zubia",
+      "title": "Limbo kontzeptua"
+    },
+    "mission": {
+      "title": "Gure misioa",
+      "text1": "Limbo sinesmen sinple batetik sortu da: Euskal Herriko ipar eta hegoaldeko muga ez luke kultura-deskubrimenean oztopo izan behar.",
+      "text2": "Gure mugaz gaindiko agendak Bidasoaren bi aldeetako kontzertuak, erakusketak, jaialdiak, proiekzioak, tailerrak eta hitzaldiak biltzen ditu. Biarritz, Bilbo, Baiona edo Donostian bazaude ere, lurralde berezi baten kultur zipriztina ezagutu dezakezu.",
+      "text3": "Manifestazio handiak eta topaketa intimoagoak baloratzen ditugu, artista lokal, elkarte edo leku independenteek bultzatuak."
+    },
+    "howItWorks": {
+      "title": "Nola funtzionatzen du?",
+      "step1": {
+        "title": "1. Esploratu",
+        "description": "Arakatu agenda osoa edo erabili gure iragazkiak zuretzat egokia dena aurkitzeko."
+      },
+      "step2": {
+        "title": "2. Hautatu",
+        "description": "Antzeman interesatzen zaizkizun ekitaldiak. Egin gure quiza iradokizun pertsonalizatuak jasotzeko."
+      },
+      "step3": {
+        "title": "3. Partekatu",
+        "description": "Ekitaldi bat antolatzen duzu? Proposatu ezazu Limbon agertu dadin."
+      }
+    },
+    "values": {
+      "title": "Gure balioak",
+      "crossBorder": {
+        "title": "Mugaz gaindikoa",
+        "description": "Kultur mugarik gabeko Euskal Herri batean sinesten dugu, non bakoitzak libreki aurkitu dezakeen bi aldeetako eskaintza."
+      },
+      "accessible": {
+        "title": "Eskuragarria",
+        "description": "Gure plataforma doan eta guztientzat irekita dago: antolatzaileak, artistak eta publikoa."
+      },
+      "diversity": {
+        "title": "Aniztasuna",
+        "description": "Ekitaldi mota guztiak nabarmentzen ditugu, eszena handietatik ekimen lokaletara."
+      },
+      "community": {
+        "title": "Komunitatea",
+        "description": "Limbo proiektu elkarlanekoa da eta euskal kultur komunitatearen ekarpenekin hazten da."
+      }
+    },
+    "contactSection": {
+      "title": "Jarri gurekin harremanetan",
+      "description": "Jarraitu gaitzazu Instagramen mugaz gaindiko kultur-aktualitatea ez galtzeko, edo jarri gurekin harremanetan edozein galdererako.",
+      "instagram": "@limbo_agenda",
+      "contactButton": "Jarri gurekin harremanetan"
+    },
+    "meta": {
+      "title": "Honi buruz – Limbo",
+      "description": "Ezagutu Limbo proiektua, Euskal Herriko ipar eta hegoaldeko kultur agenda mugaz gaindikoa."
+    }
+  },
+  "quiz": {
+    "intro": {
+      "subtitle": "Erantzun galdera batzuei zuretzat egokitzen diren ekitaldiak aurkitzeko",
+      "title": "Zein ekitaldi zaizu egokitzen?"
+    },
+    "questions": {
+      "q1": {
+        "label": "1. Zein giroa nahiago duzu?",
+        "options": {
+          "intimiste": "Intimoa",
+          "club": "Kluba / Aretoa",
+          "pleinAir": "Aire zabalean",
+          "populaire": "Jende asko"
+        }
+      },
+      "q2": {
+        "label": "2. Eguneko zein unetan?",
+        "options": {
+          "matin": "Goizean",
+          "apresMidi": "Arratsaldean",
+          "soir": "Arratsean",
+          "nuit": "Gauean"
+        }
+      },
+      "q3": {
+        "label": "3. Zein aldetik?",
+        "options": {
+          "nord": "Iparraldea",
+          "sud": "Hegoaldea",
+          "peuImporte": "Berdin dit"
+        }
+      },
+      "q4": {
+        "label": "4. Aurrekontua?",
+        "options": {
+          "gratuit": "Doan",
+          "abordable": "Prezio onean",
+          "peuImporte": "Berdin dit"
+        }
+      },
+      "q5": {
+        "label": "5. Ekitaldi mota gustukoena?",
+        "options": {
+          "concert": "Kontzertua",
+          "expo": "Erakusketa",
+          "festival": "Jaialdia",
+          "atelier": "Tailerra",
+          "cinema": "Zinema",
+          "theatre": "Antzerkia",
+          "danse": "Dantza",
+          "conference": "Hitzaldia"
+        }
+      }
+    },
+    "actions": {
+      "submit": "Ikusi nire gomendioak",
+      "reset": "Quiza berriz egin",
+      "viewAll": "Ekitaldi guztiak ikusi"
+    },
+    "results": {
+      "title": "Hona hemen zuretzako ekitaldiak!",
+      "messages": [
+        "Ekitaldi hauek bereziki zuretzat hautatu ditugu.",
+        "Ekitaldi hauek zure lehentasunetara egokitzen dira.",
+        "Hona hemen gure hautaketa pertsonalizatua zure gustuen arabera."
+      ]
+    },
+    "meta": {
+      "title": "Quiz – Zein ekitaldi zaizu egokitzen? – Limbo",
+      "description": "Erantzun gure quizari zure nahietara egokitzen diren kultur ekitaldiak aurkitzeko."
+    }
   }
 }

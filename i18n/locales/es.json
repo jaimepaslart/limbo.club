@@ -77,5 +77,133 @@
   "meta": {
     "title": "Limbo – Agenda cultural País Vasco · Bayona <> Donostia",
     "description": "Expo · Fiesta · Charla · Diseño. Animal social transfronterizo del País Vasco. Bayona <> Donostia"
+  },
+  "about": {
+    "sectionTitle": {
+      "subtitle": "Un puente cultural entre dos territorios",
+      "title": "El concepto Limbo"
+    },
+    "mission": {
+      "title": "Nuestra misión",
+      "text1": "Limbo nació de una convicción simple: la frontera entre el País Vasco norte y sur no debería ser un obstáculo para el descubrimiento cultural.",
+      "text2": "Nuestra agenda transfronteriza reúne conciertos, exposiciones, festivales, proyecciones, talleres y conferencias de ambos lados del Bidasoa. Ya sea que estés en Biarritz, Bilbao, Bayona o Donostia, descubre la efervescencia cultural de un territorio único.",
+      "text3": "Valoramos tanto las grandes manifestaciones como las citas más íntimas, impulsadas por artistas locales, asociaciones o lugares independientes."
+    },
+    "howItWorks": {
+      "title": "¿Cómo funciona?",
+      "step1": {
+        "title": "1. Explora",
+        "description": "Navega por la agenda completa o usa nuestros filtros para encontrar lo que te corresponde."
+      },
+      "step2": {
+        "title": "2. Selecciona",
+        "description": "Identifica los eventos que te interesan. Haz nuestro quiz para obtener sugerencias personalizadas."
+      },
+      "step3": {
+        "title": "3. Comparte",
+        "description": "¿Organizas un evento? Proponlo para que aparezca en Limbo."
+      }
+    },
+    "values": {
+      "title": "Nuestros valores",
+      "crossBorder": {
+        "title": "Transfronterizo",
+        "description": "Creemos en un País Vasco sin frontera cultural, donde cada uno pueda descubrir libremente la oferta de ambos lados."
+      },
+      "accessible": {
+        "title": "Accesible",
+        "description": "Nuestra plataforma es gratuita y abierta a todos: organizadores, artistas y público."
+      },
+      "diversity": {
+        "title": "Diversidad",
+        "description": "Destacamos todos los tipos de eventos, desde grandes escenarios hasta iniciativas locales."
+      },
+      "community": {
+        "title": "Comunidad",
+        "description": "Limbo es un proyecto colaborativo que crece gracias a las contribuciones de la comunidad cultural vasca."
+      }
+    },
+    "contactSection": {
+      "title": "Mantengámonos en contacto",
+      "description": "Síguenos en Instagram para no perderte nada de la actualidad cultural transfronteriza, o contáctanos para cualquier pregunta.",
+      "instagram": "@limbo_agenda",
+      "contactButton": "Contáctanos"
+    },
+    "meta": {
+      "title": "Acerca de – Limbo",
+      "description": "Descubre el proyecto Limbo, agenda cultural transfronteriza del País Vasco norte y sur."
+    }
+  },
+  "quiz": {
+    "intro": {
+      "subtitle": "Responde a algunas preguntas para descubrir los eventos que te corresponden",
+      "title": "¿Qué evento te corresponde?"
+    },
+    "questions": {
+      "q1": {
+        "label": "1. ¿Qué ambiente prefieres?",
+        "options": {
+          "intimiste": "Intimista",
+          "club": "Club / Sala",
+          "pleinAir": "Aire libre",
+          "populaire": "Gran multitud"
+        }
+      },
+      "q2": {
+        "label": "2. ¿En qué momento del día?",
+        "options": {
+          "matin": "Mañana",
+          "apresMidi": "Tarde",
+          "soir": "Atardecer",
+          "nuit": "Noche"
+        }
+      },
+      "q3": {
+        "label": "3. ¿De qué lado?",
+        "options": {
+          "nord": "Norte",
+          "sud": "Sur",
+          "peuImporte": "No importa"
+        }
+      },
+      "q4": {
+        "label": "4. ¿Presupuesto?",
+        "options": {
+          "gratuit": "Gratis",
+          "abordable": "Asequible",
+          "peuImporte": "No importa"
+        }
+      },
+      "q5": {
+        "label": "5. ¿Tipo de evento preferido?",
+        "options": {
+          "concert": "Concierto",
+          "expo": "Expo",
+          "festival": "Festival",
+          "atelier": "Taller",
+          "cinema": "Cine",
+          "theatre": "Teatro",
+          "danse": "Danza",
+          "conference": "Conferencia"
+        }
+      }
+    },
+    "actions": {
+      "submit": "Ver mis recomendaciones",
+      "reset": "Repetir el quiz",
+      "viewAll": "Ver todos los eventos"
+    },
+    "results": {
+      "title": "¡Aquí están los eventos para ti!",
+      "messages": [
+        "Hemos seleccionado estos eventos especialmente para ti.",
+        "Estos eventos corresponden perfectamente a tus preferencias.",
+        "Aquí está nuestra selección personalizada según tus gustos."
+      ]
+    },
+    "meta": {
+      "title": "Quiz – ¿Qué evento te corresponde? – Limbo",
+      "description": "Responde a nuestro quiz para descubrir los eventos culturales que corresponden a tus deseos."
+    }
   }
 }
