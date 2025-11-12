@@ -84,7 +84,7 @@
 
 <script setup lang="ts">
 interface Props {
-  size?: 'sm' | 'md' | 'lg' | 'xl'
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
   color?: 'light' | 'primary' | 'gradient'
 }
 
@@ -98,7 +98,9 @@ const svgClass = computed(() => {
     sm: 'h-16 w-auto',
     md: 'h-32 w-auto',
     lg: 'h-40 w-auto',
-    xl: 'h-48 w-auto'
+    xl: 'h-48 w-auto',
+    '2xl': 'h-64 w-auto',
+    '3xl': 'h-96 w-auto'
   }
 
   const colors = {
