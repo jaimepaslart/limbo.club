@@ -67,6 +67,9 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Agenda culturel transfrontalier du Pays Basque nord et sud. Découvrez les événements, concerts, expositions et festivals des deux côtés de la frontière.' },
         { name: 'format-detection', content: 'telephone=no' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
       ]
     }
   },

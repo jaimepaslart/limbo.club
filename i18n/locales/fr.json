@@ -205,5 +205,115 @@
       "title": "Quiz – Quel événement te correspond ? – Limbo",
       "description": "Réponds à notre quiz pour découvrir les événements culturels qui correspondent à tes envies."
     }
+  },
+  "filters": {
+    "title": "Filtrer les événements",
+    "search": {
+      "label": "Rechercher",
+      "placeholder": "Titre, lieu, ville..."
+    },
+    "side": {
+      "label": "Côté",
+      "all": "Tous",
+      "nord": "Nord",
+      "sud": "Sud"
+    },
+    "type": {
+      "label": "Type d'événement",
+      "all": "Tous les types",
+      "concert": "Concert",
+      "expo": "Exposition",
+      "festival": "Festival",
+      "cinema": "Cinéma",
+      "atelier": "Atelier",
+      "theatre": "Théâtre",
+      "danse": "Danse",
+      "conference": "Conférence"
+    },
+    "dateRange": {
+      "label": "Période",
+      "all": "Toutes les dates",
+      "upcoming": "À venir",
+      "weekend": "Ce week-end",
+      "month": "Ce mois-ci"
+    },
+    "city": {
+      "label": "Ville",
+      "placeholder": "Filtrer par ville..."
+    },
+    "reset": "Réinitialiser les filtres"
+  },
+  "proposeEvent": {
+    "sectionTitle": {
+      "subtitle": "Partagez votre événement avec la communauté Limbo",
+      "title": "Proposer un événement"
+    },
+    "form": {
+      "title": {
+        "label": "Nom de l'événement",
+        "placeholder": "Ex: Concert de jazz au Kursaal"
+      },
+      "type": {
+        "label": "Type d'événement",
+        "placeholder": "Sélectionnez un type",
+        "concert": "Concert",
+        "expo": "Exposition",
+        "festival": "Festival",
+        "cinema": "Cinéma",
+        "atelier": "Atelier",
+        "theatre": "Théâtre",
+        "danse": "Danse",
+        "conference": "Conférence"
+      },
+      "date": {
+        "label": "Date"
+      },
+      "time": {
+        "label": "Heure"
+      },
+      "city": {
+        "label": "Ville",
+        "placeholder": "Ex: Biarritz"
+      },
+      "side": {
+        "label": "Côté",
+        "placeholder": "Sélectionnez",
+        "nord": "Pays Basque Nord",
+        "sud": "Pays Basque Sud"
+      },
+      "venue": {
+        "label": "Lieu (nom du lieu)",
+        "placeholder": "Ex: Atabal, Victoria Eugenia, Musée Basque..."
+      },
+      "url": {
+        "label": "Site web / Instagram",
+        "placeholder": "https://..."
+      },
+      "description": {
+        "label": "Description courte",
+        "placeholder": "Décrivez brièvement votre événement..."
+      },
+      "email": {
+        "label": "Email de contact",
+        "placeholder": "votre{'@'}email.com"
+      },
+      "required": "Champs obligatoires",
+      "submit": "Envoyer ma proposition",
+      "submitting": "Envoi en cours..."
+    },
+    "success": {
+      "title": "Merci pour votre proposition !",
+      "message": "Nous avons bien reçu votre événement. Notre équipe va l'examiner et le publier prochainement.",
+      "button": "Proposer un autre événement"
+    },
+    "error": {
+      "title": "Erreur",
+      "defaultMessage": "Une erreur est survenue. Veuillez réessayer.",
+      "button": "Réessayer"
+    },
+    "meta": {
+      "title": "Proposer un événement – Limbo",
+      "description": "Partagez votre événement culturel avec la communauté Limbo."
+    }
   }
 }

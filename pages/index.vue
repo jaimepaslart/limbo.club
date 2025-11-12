@@ -56,7 +56,7 @@
                   <TagPill :label="event.type" variant="primary" />
                 </div>
                 <h3 class="text-2xl md:text-3xl font-display font-bold text-light mb-3 group-hover:text-primary transition-colors">
-                  {{ event.title }}
+                  {{ getTranslatedText(event.title) }}
                 </h3>
                 <p class="text-light/50 mb-2">{{ formatDate(event.date) }}</p>
                 <p class="text-light/40 text-sm">{{ event.city }} · {{ event.side === 'nord' ? t('home.events.nord') : t('home.events.sud') }}</p>
@@ -149,6 +149,7 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const { getFeaturedEvents } = useEvents()
+const { getTranslatedText } = useTranslatedEvent()
 const featuredEvents = getFeaturedEvents()
 
 const formatDate = (dateString: string): string => {

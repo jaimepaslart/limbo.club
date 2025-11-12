@@ -3,9 +3,9 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
       <SectionTitle
         align="center"
-        subtitle="Partagez votre événement avec la communauté Limbo"
+        :subtitle="t('proposeEvent.sectionTitle.subtitle')"
       >
-        Proposer un événement
+        {{ t('proposeEvent.sectionTitle.title') }}
       </SectionTitle>
 
       <!-- Error Message -->
@@ -18,13 +18,13 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <h3 class="text-2xl font-display font-bold text-light mb-2">
-            Erreur
+            {{ t('proposeEvent.error.title') }}
           </h3>
           <p class="text-light/70 mb-6">
             {{ errorMessage }}
           </p>
           <PrimaryButton variant="outline" @click="errorMessage = ''">
-            Réessayer
+            {{ t('proposeEvent.error.button') }}
           </PrimaryButton>
         </div>
       </Transition>
@@ -39,13 +39,13 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <h3 class="text-2xl font-display font-bold text-light mb-2">
-            Merci pour votre proposition !
+            {{ t('proposeEvent.success.title') }}
           </h3>
           <p class="text-light/70 mb-6">
-            Nous avons bien reçu votre événement. Notre équipe va l'examiner et le publier prochainement.
+            {{ t('proposeEvent.success.message') }}
           </p>
           <PrimaryButton variant="outline" @click="resetForm">
-            Proposer un autre événement
+            {{ t('proposeEvent.success.button') }}
           </PrimaryButton>
         </div>
       </Transition>
@@ -55,7 +55,7 @@
         <!-- Event Name -->
         <div>
           <label for="title" class="block text-sm font-medium text-light/80 mb-2">
-            Nom de l'événement <span class="text-primary">*</span>
+            {{ t('proposeEvent.form.title.label') }} <span class="text-primary">*</span>
           </label>
           <input
             id="title"
@@ -63,14 +63,14 @@
             type="text"
             required
             class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light placeholder-light/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            placeholder="Ex: Concert de jazz au Kursaal"
+            :placeholder="t('proposeEvent.form.title.placeholder')"
           >
         </div>
 
         <!-- Event Type -->
         <div>
           <label for="type" class="block text-sm font-medium text-light/80 mb-2">
-            Type d'événement <span class="text-primary">*</span>
+            {{ t('proposeEvent.form.type.label') }} <span class="text-primary">*</span>
           </label>
           <select
             id="type"
@@ -78,15 +78,15 @@
             required
             class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           >
-            <option value="">Sélectionnez un type</option>
-            <option value="concert">Concert</option>
-            <option value="expo">Exposition</option>
-            <option value="festival">Festival</option>
-            <option value="cinema">Cinéma</option>
-            <option value="atelier">Atelier</option>
-            <option value="theatre">Théâtre</option>
-            <option value="danse">Danse</option>
-            <option value="conference">Conférence</option>
+            <option value="">{{ t('proposeEvent.form.type.placeholder') }}</option>
+            <option value="concert">{{ t('proposeEvent.form.type.concert') }}</option>
+            <option value="expo">{{ t('proposeEvent.form.type.expo') }}</option>
+            <option value="festival">{{ t('proposeEvent.form.type.festival') }}</option>
+            <option value="cinema">{{ t('proposeEvent.form.type.cinema') }}</option>
+            <option value="atelier">{{ t('proposeEvent.form.type.atelier') }}</option>
+            <option value="theatre">{{ t('proposeEvent.form.type.theatre') }}</option>
+            <option value="danse">{{ t('proposeEvent.form.type.danse') }}</option>
+            <option value="conference">{{ t('proposeEvent.form.type.conference') }}</option>
           </select>
         </div>
 
@@ -94,7 +94,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label for="date" class="block text-sm font-medium text-light/80 mb-2">
-              Date <span class="text-primary">*</span>
+              {{ t('proposeEvent.form.date.label') }} <span class="text-primary">*</span>
             </label>
             <input
               id="date"
@@ -106,7 +106,7 @@
           </div>
           <div>
             <label for="time" class="block text-sm font-medium text-light/80 mb-2">
-              Heure
+              {{ t('proposeEvent.form.time.label') }}
             </label>
             <input
               id="time"
@@ -121,7 +121,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label for="city" class="block text-sm font-medium text-light/80 mb-2">
-              Ville <span class="text-primary">*</span>
+              {{ t('proposeEvent.form.city.label') }} <span class="text-primary">*</span>
             </label>
             <input
               id="city"
@@ -129,12 +129,12 @@
               type="text"
               required
               class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light placeholder-light/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-              placeholder="Ex: Biarritz"
+              :placeholder="t('proposeEvent.form.city.placeholder')"
             >
           </div>
           <div>
             <label for="side" class="block text-sm font-medium text-light/80 mb-2">
-              Côté <span class="text-primary">*</span>
+              {{ t('proposeEvent.form.side.label') }} <span class="text-primary">*</span>
             </label>
             <select
               id="side"
@@ -142,9 +142,9 @@
               required
               class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             >
-              <option value="">Sélectionnez</option>
-              <option value="nord">Pays Basque Nord</option>
-              <option value="sud">Pays Basque Sud</option>
+              <option value="">{{ t('proposeEvent.form.side.placeholder') }}</option>
+              <option value="nord">{{ t('proposeEvent.form.side.nord') }}</option>
+              <option value="sud">{{ t('proposeEvent.form.side.sud') }}</option>
             </select>
           </div>
         </div>
@@ -152,7 +152,7 @@
         <!-- Venue -->
         <div>
           <label for="venue" class="block text-sm font-medium text-light/80 mb-2">
-            Lieu (nom du lieu) <span class="text-primary">*</span>
+            {{ t('proposeEvent.form.venue.label') }} <span class="text-primary">*</span>
           </label>
           <input
             id="venue"
@@ -160,42 +160,42 @@
             type="text"
             required
             class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light placeholder-light/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            placeholder="Ex: Atabal, Victoria Eugenia, Musée Basque..."
+            :placeholder="t('proposeEvent.form.venue.placeholder')"
           >
         </div>
 
         <!-- URL -->
         <div>
           <label for="url" class="block text-sm font-medium text-light/80 mb-2">
-            Site web / Instagram
+            {{ t('proposeEvent.form.url.label') }}
           </label>
           <input
             id="url"
             v-model="formData.url"
             type="url"
             class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light placeholder-light/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            placeholder="https://..."
+            :placeholder="t('proposeEvent.form.url.placeholder')"
           >
         </div>
 
         <!-- Description -->
         <div>
           <label for="description" class="block text-sm font-medium text-light/80 mb-2">
-            Description courte
+            {{ t('proposeEvent.form.description.label') }}
           </label>
           <textarea
             id="description"
             v-model="formData.description"
             rows="4"
             class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light placeholder-light/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-            placeholder="Décrivez brièvement votre événement..."
+            :placeholder="t('proposeEvent.form.description.placeholder')"
           />
         </div>
 
         <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-medium text-light/80 mb-2">
-            Email de contact <span class="text-primary">*</span>
+            {{ t('proposeEvent.form.email.label') }} <span class="text-primary">*</span>
           </label>
           <input
             id="email"
@@ -203,7 +203,7 @@
             type="email"
             required
             class="w-full bg-dark-light border border-white/20 rounded-lg px-4 py-3 text-light placeholder-light/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            placeholder="votre@email.com"
+            :placeholder="t('proposeEvent.form.email.placeholder')"
           >
         </div>
 
@@ -215,13 +215,13 @@
             class="w-full"
             :disabled="isSubmitting"
           >
-            <span v-if="isSubmitting">Envoi en cours...</span>
-            <span v-else>Envoyer ma proposition</span>
+            <span v-if="isSubmitting">{{ t('proposeEvent.form.submitting') }}</span>
+            <span v-else>{{ t('proposeEvent.form.submit') }}</span>
           </PrimaryButton>
         </div>
 
         <p class="text-sm text-light/50 text-center">
-          * Champs obligatoires
+          * {{ t('proposeEvent.form.required') }}
         </p>
       </form>
     </div>
@@ -230,6 +230,8 @@
 
 <script setup lang="ts">
 import type { EventSide, EventType } from '~/types/event'
+
+const { t } = useI18n()
 
 interface FormData {
   title: string
@@ -278,7 +280,7 @@ const handleSubmit = async () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   } catch (error: any) {
     console.error('Erreur lors de la soumission:', error)
-    errorMessage.value = error.data?.statusMessage || 'Une erreur est survenue. Veuillez réessayer.'
+    errorMessage.value = error.data?.statusMessage || t('proposeEvent.error.defaultMessage')
 
     // Scroll to top to show error
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -305,11 +307,11 @@ const resetForm = () => {
 }
 
 useHead({
-  title: 'Proposer un événement – Limbo',
+  title: t('proposeEvent.meta.title'),
   meta: [
     {
       name: 'description',
-      content: 'Partagez votre événement culturel avec la communauté Limbo.'
+      content: t('proposeEvent.meta.description')
     }
   ]
 })

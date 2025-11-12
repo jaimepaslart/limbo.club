@@ -13,7 +13,7 @@
 
       <!-- Title -->
       <h3 class="text-xl font-display font-bold text-light mb-2 group-hover:text-primary transition-colors">
-        {{ event.title }}
+        {{ localizedEvent.title }}
       </h3>
 
       <!-- Date & Time -->
@@ -35,8 +35,8 @@
       </div>
 
       <!-- Description -->
-      <p v-if="event.description" class="text-light/70 text-sm mb-4 line-clamp-2">
-        {{ event.description }}
+      <p v-if="localizedEvent.description" class="text-light/70 text-sm mb-4 line-clamp-2">
+        {{ localizedEvent.description }}
       </p>
 
       <!-- Tags -->
@@ -61,7 +61,7 @@
           rel="noopener noreferrer"
           class="text-sm text-light/60 hover:text-primary transition-colors flex items-center"
         >
-          En savoir plus
+          {{ t('common.actions.learnMore') }}
           <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
@@ -78,7 +78,12 @@ interface Props {
   event: Event
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const { t } = useI18n()
+const { getLocalizedEvent } = useTranslatedEvent()
+
+const localizedEvent = computed(() => getLocalizedEvent(props.event))
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)

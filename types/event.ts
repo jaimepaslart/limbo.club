@@ -10,9 +10,17 @@ export type EventType =
   | 'danse'
   | 'conference'
 
+export type Locale = 'fr' | 'eu' | 'es'
+
+export interface TranslatedText {
+  fr: string
+  eu: string
+  es: string
+}
+
 export interface Event {
   id: string
-  title: string
+  title: TranslatedText
   date: string // ISO format
   time?: string
   city: string
@@ -20,7 +28,7 @@ export interface Event {
   type: EventType
   venue: string
   tags: string[]
-  description?: string
+  description: TranslatedText
   url?: string
   price?: string
   featured?: boolean

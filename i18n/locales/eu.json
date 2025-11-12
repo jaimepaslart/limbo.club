@@ -205,5 +205,115 @@
       "title": "Quiz – Zein ekitaldi zaizu egokitzen? – Limbo",
       "description": "Erantzun gure quizari zure nahietara egokitzen diren kultur ekitaldiak aurkitzeko."
     }
+  },
+  "filters": {
+    "title": "Ekitaldiak iragazi",
+    "search": {
+      "label": "Bilatu",
+      "placeholder": "Izenburua, lekua, herria..."
+    },
+    "side": {
+      "label": "Aldea",
+      "all": "Guztiak",
+      "nord": "Iparraldea",
+      "sud": "Hegoaldea"
+    },
+    "type": {
+      "label": "Ekitaldi mota",
+      "all": "Mota guztiak",
+      "concert": "Kontzertua",
+      "expo": "Erakusketa",
+      "festival": "Jaialdia",
+      "cinema": "Zinema",
+      "atelier": "Tailerra",
+      "theatre": "Antzerkia",
+      "danse": "Dantza",
+      "conference": "Hitzaldia"
+    },
+    "dateRange": {
+      "label": "Aldia",
+      "all": "Data guztiak",
+      "upcoming": "Datozenak",
+      "weekend": "Asteburu honetan",
+      "month": "Hil honetan"
+    },
+    "city": {
+      "label": "Herria",
+      "placeholder": "Iragazi herriaren arabera..."
+    },
+    "reset": "Iragazkiak berrezarri"
+  },
+  "proposeEvent": {
+    "sectionTitle": {
+      "subtitle": "Partekatu zure ekitaldia Limbo komunitatearekin",
+      "title": "Ekitaldia proposatu"
+    },
+    "form": {
+      "title": {
+        "label": "Ekitaldiaren izena",
+        "placeholder": "Ad.: Kursaaleko jazz kontzertua"
+      },
+      "type": {
+        "label": "Ekitaldi mota",
+        "placeholder": "Hautatu mota bat",
+        "concert": "Kontzertua",
+        "expo": "Erakusketa",
+        "festival": "Jaialdia",
+        "cinema": "Zinema",
+        "atelier": "Tailerra",
+        "theatre": "Antzerkia",
+        "danse": "Dantza",
+        "conference": "Hitzaldia"
+      },
+      "date": {
+        "label": "Data"
+      },
+      "time": {
+        "label": "Ordua"
+      },
+      "city": {
+        "label": "Herria",
+        "placeholder": "Ad.: Miarritze"
+      },
+      "side": {
+        "label": "Aldea",
+        "placeholder": "Hautatu",
+        "nord": "Ipar Euskal Herria",
+        "sud": "Hego Euskal Herria"
+      },
+      "venue": {
+        "label": "Lekua (leku izena)",
+        "placeholder": "Ad.: Atabal, Victoria Eugenia, Euskal Museoa..."
+      },
+      "url": {
+        "label": "Webgunea / Instagram",
+        "placeholder": "https://..."
+      },
+      "description": {
+        "label": "Deskribapen laburra",
+        "placeholder": "Deskribatu labur zure ekitaldia..."
+      },
+      "email": {
+        "label": "Harremanetarako emaila",
+        "placeholder": "zure{'@'}emaila.eus"
+      },
+      "required": "Nahitaezko eremuak",
+      "submit": "Bidali nire proposamena",
+      "submitting": "Bidaltzen..."
+    },
+    "success": {
+      "title": "Eskerrik asko zure proposamenagatik!",
+      "message": "Zure ekitaldia ondo jaso dugu. Gure taldeak aztertuko du eta laster argitaratuko.",
+      "button": "Beste ekitaldi bat proposatu"
+    },
+    "error": {
+      "title": "Errorea",
+      "defaultMessage": "Errore bat gertatu da. Mesedez, saiatu berriro.",
+      "button": "Berriro saiatu"
+    },
+    "meta": {
+      "title": "Ekitaldia proposatu – Limbo",
+      "description": "Partekatu zure kultur ekitaldia Limbo komunitatearekin."
+    }
   }
 }

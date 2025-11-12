@@ -44,7 +44,7 @@
                     <TagPill :label="event.type" variant="primary" />
                   </div>
                   <h3 class="text-3xl md:text-4xl font-display font-bold text-light mb-4 group-hover:text-primary transition-colors">
-                    {{ event.title }}
+                    {{ getTranslatedText(event.title) }}
                   </h3>
                   <div class="flex flex-wrap gap-4 text-light/40 text-sm mb-4">
                     <span>{{ formatDate(event.date) }}</span>
@@ -52,8 +52,8 @@
                     <span>{{ event.city }}</span>
                     <span>{{ event.side === 'nord' ? 'Nord' : 'Sud' }}</span>
                   </div>
-                  <p v-if="event.description" class="text-light/50 leading-relaxed font-light max-w-2xl">
-                    {{ event.description }}
+                  <p class="text-light/50 leading-relaxed font-light max-w-2xl">
+                    {{ getTranslatedText(event.description) }}
                   </p>
                 </div>
                 <div v-if="event.url" class="md:ml-8">
@@ -109,6 +109,7 @@
 import type { EventFilters } from '~/types/event'
 
 const { filterEvents } = useEvents()
+const { getTranslatedText } = useTranslatedEvent()
 
 const filters = ref<EventFilters>({
   dateRange: 'upcoming'

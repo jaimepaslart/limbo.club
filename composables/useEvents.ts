@@ -2,6 +2,8 @@ import { events as allEvents } from '~/data/events'
 import type { Event, EventFilters } from '~/types/event'
 
 export const useEvents = () => {
+  const { getTranslatedText } = useTranslatedEvent()
+
   const filterEvents = (filters: EventFilters): Event[] => {
     let filtered = [...allEvents]
 
@@ -21,11 +23,14 @@ export const useEvents = () => {
 
     if (filters.search) {
       const search = filters.search.toLowerCase()
-      filtered = filtered.filter(event =>
-        event.title.toLowerCase().includes(search) ||
-        event.venue.toLowerCase().includes(search) ||
-        event.city.toLowerCase().includes(search)
-      )
+      filtered = filtered.filter(event => {
+        const title = getTranslatedText(event.title).toLowerCase()
+        const description = getTranslatedText(event.description).toLowerCase()
+        return title.includes(search) ||
+          description.includes(search) ||
+          event.venue.toLowerCase().includes(search) ||
+          event.city.toLowerCase().includes(search)
+      })
     }
 
     if (filters.dateRange) {
