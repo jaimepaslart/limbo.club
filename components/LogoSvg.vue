@@ -6,7 +6,15 @@
     viewBox="0 0 2000 2000"
     :class="svgClass"
   >
-    <g>
+    <!-- Définition du dégradé SVG -->
+    <defs>
+      <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#A855F7;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#EC4899;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <g :fill="fillStyle">
       <g transform="translate(66.670899, 219.749986)">
         <g>
           <path d="M224.2,1004.7c-24,0-47.9,0-71.9,0c-22.3-1.4-43.4-3.7-61.2-18.7c-15.3-13.3-21.9-33.3-21.6-53.2
@@ -69,7 +77,7 @@
 <script setup lang="ts">
 interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl'
-  color?: 'light' | 'primary'
+  color?: 'light' | 'primary' | 'gradient'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -87,9 +95,17 @@ const svgClass = computed(() => {
 
   const colors = {
     light: 'fill-light',
-    primary: 'fill-primary'
+    primary: 'fill-primary',
+    gradient: '' // Le dégradé sera appliqué via le fill dans le template
   }
 
-  return `${sizes[props.size]} ${colors[props.color]}`
+  const fillClass = props.color === 'gradient' ? '' : colors[props.color]
+
+  return `${sizes[props.size]} ${fillClass}`.trim()
+})
+
+// Utiliser le dégradé SVG si la couleur est 'gradient'
+const fillStyle = computed(() => {
+  return props.color === 'gradient' ? 'url(#logo-gradient)' : undefined
 })
 </script>

@@ -5,12 +5,22 @@
       <div class="container mx-auto px-6 lg:px-12">
         <div class="max-w-6xl mx-auto">
           <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-8 bauhaus-accent">{{ t('home.hero.tagline') }}</p>
-          <h1 class="text-7xl md:text-8xl lg:text-9xl font-display font-bold text-light mb-12 leading-[0.9] tracking-tighter bauhaus-title">
-            {{ t('home.hero.title') }}
-          </h1>
+
+          <!-- Logo animé avec dégradé -->
+          <div class="mb-12 logo-container">
+            <LogoSvg size="xl" color="gradient" class="logo-animated" />
+          </div>
+
+          <!-- Sous-titre avec animation typewriter -->
           <p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-8 max-w-3xl font-light">
-            {{ t('home.hero.subtitle') }}
+            <TypewriterText
+              :text="t('home.hero.subtitle')"
+              :speed="100"
+              :start-delay="800"
+              :show-cursor="false"
+            />
           </p>
+
           <p class="text-xl md:text-2xl text-light/50 mb-4 font-light">
             {{ t('home.hero.description') }}
           </p>
@@ -172,3 +182,76 @@ useHead({
   ]
 })
 </script>
+
+<style scoped>
+/* Animation d'entrée du logo : morphing doux */
+.logo-animated {
+  animation: logoMorph 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform-origin: center;
+}
+
+@keyframes logoMorph {
+  0% {
+    transform: scale(0.8) scaleY(1.2) rotate(-2deg);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.05) scaleY(0.95) rotate(1deg);
+    opacity: 1;
+  }
+  65% {
+    transform: scale(0.98) scaleY(1.02) rotate(-0.5deg);
+  }
+  100% {
+    transform: scale(1) scaleY(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Dégradé élégant violet→rose sur le logo */
+.logo-gradient :deep(svg) {
+  fill: url(#logoGradient);
+}
+
+/* Création du dégradé SVG */
+.logo-container {
+  position: relative;
+}
+
+.logo-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Application du dégradé via filter pour SVG */
+.logo-gradient :deep(svg path) {
+  fill: url(#logo-gradient-def);
+}
+
+/* Définition du dégradé inline */
+.logo-gradient :deep(svg) {
+  background: linear-gradient(135deg, #A855F7 0%, #EC4899 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Fallback : dégradé via fill si le SVG le supporte */
+.logo-gradient {
+  background: linear-gradient(135deg, #A855F7 0%, #EC4899 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Désactiver les animations si reduced-motion est activé */
+@media (prefers-reduced-motion: reduce) {
+  .logo-animated {
+    animation: none;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+</style>
