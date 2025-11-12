@@ -3,7 +3,7 @@
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 380 1700 850"
+    viewBox="0 0 2000 2000"
     :class="svgClass"
   >
     <g>
@@ -79,10 +79,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const svgClass = computed(() => {
   const sizes = {
-    sm: 'h-8 w-auto',
-    md: 'h-14 w-auto',
-    lg: 'h-20 w-auto',
-    xl: 'h-24 w-auto'
+    sm: 'h-16 w-auto',
+    md: 'h-32 w-auto',
+    lg: 'h-40 w-auto',
+    xl: 'h-48 w-auto'
   }
 
   const colors = {
