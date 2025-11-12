@@ -6,19 +6,12 @@
         <div class="max-w-6xl mx-auto">
           <p class="text-sm uppercase tracking-[0.3em] text-light/40 mb-8 bauhaus-accent">{{ t('home.hero.tagline') }}</p>
 
-          <!-- Logo avec dégradé animé -->
-          <div class="mb-12 logo-container">
-            <LogoSvg size="3xl" color="gradient" />
-          </div>
+          <h1 class="text-7xl md:text-8xl lg:text-9xl font-display font-bold text-light mb-12 leading-[0.9] tracking-tighter bauhaus-title">
+            {{ t('home.hero.title') }}
+          </h1>
 
-          <!-- Sous-titre avec animation typewriter -->
           <p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-8 max-w-3xl font-light">
-            <TypewriterText
-              :text="t('home.hero.subtitle')"
-              :speed="100"
-              :start-delay="800"
-              :show-cursor="false"
-            />
+            {{ t('home.hero.subtitle') }}
           </p>
 
           <p class="text-xl md:text-2xl text-light/50 mb-4 font-light">
@@ -183,6 +176,3 @@ useHead({
 })
 </script>
 
-<style scoped>
-/* Pas d'animation sur le logo - le dégradé est animé dans le SVG lui-même */
-</style>
