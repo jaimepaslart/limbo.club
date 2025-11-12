@@ -259,12 +259,34 @@ body::after {
 }
 */
 
+/* Page transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
 /* Classe pour désactiver les animations si nécessaire */
 @media (prefers-reduced-motion: reduce) {
   .limbo-flames-bg::before,
   .flame-glow,
   .flame-underline::after {
     animation: none !important;
+  }
+
+  /* Désactiver les transitions de page */
+  .page-enter-active,
+  .page-leave-active {
+    transition: none !important;
   }
 
   /* Réactiver le curseur normal pour accessibilité */

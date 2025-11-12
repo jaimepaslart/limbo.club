@@ -57,6 +57,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'Limbo – Agenda culturel transfrontalier',
       htmlAttrs: {
