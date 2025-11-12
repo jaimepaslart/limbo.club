@@ -9,6 +9,11 @@
   directory = ".netlify/functions-internal"
   node_bundler = "esbuild"
 
+# Désactiver le cache pour toutes les functions
+# Cela évite la désynchronisation entre le HTML SSR et les assets JS
+[functions."*"]
+  included_files = ["**"]
+
 [[headers]]
   for = "/*"
   [headers.values]
