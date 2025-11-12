@@ -9,30 +9,64 @@
   directory = ".netlify/functions-internal"
   node_bundler = "esbuild"
 
+# Headers pour les pages HTML (SSR)
 [[headers]]
   for = "/*"
   [headers.values]
+    # Security headers
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Cache-Control = "no-cache, no-store, must-revalidate"
+    X-XSS-Protection = "1; mode=block"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    # Cache modéré pour HTML (5 minutes) avec revalidation
+    Cache-Control = "public, max-age=300, must-revalidate"
 
+    # Préconnexion aux domaines externes (Google Fonts)
+    Link = "<https://fonts.gstatic.com>; rel=preconnect; crossorigin, <https://fonts.googleapis.com>; rel=preconnect"
+
+# Assets JavaScript avec hash (cache long)
 [[headers]]
   for = "/_nuxt/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    # Compression déjà gérée par Netlify
 
+# Assets CSS avec hash (cache long)
 [[headers]]
   for = "/_nuxt/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Fonts téléchargées (cache très long)
+[[headers]]
+  for = "/_fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+# Images (cache long)
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, immutable"
+
+# Builds metadata (pas de cache)
 [[headers]]
   for = "/_nuxt/builds/*"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Redirects automatiques
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = false

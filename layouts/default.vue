@@ -3,8 +3,8 @@
     <!-- Fond de flammes abstraites -->
     <div class="limbo-flames-overlay"></div>
 
-    <!-- Formes Bauhaus -->
-    <BauhausShapes />
+    <!-- Formes Bauhaus (lazy loaded) -->
+    <LazyBauhausShapes />
 
     <AppHeader />
     <main class="flex-1 pt-20 relative" style="z-index: 100;">

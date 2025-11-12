@@ -6,9 +6,23 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
+    '@nuxt/image',
     'nuxt-mcp',
     '@nuxtjs/i18n'
   ],
+
+  image: {
+    formats: ['webp', 'avif'],
+    quality: 80,
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536
+    }
+  },
 
   i18n: {
     locales: [

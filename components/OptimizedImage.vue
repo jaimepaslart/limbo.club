@@ -1,11 +1,13 @@
 <template>
-  <img
+  <NuxtImg
     :src="src"
     :alt="alt"
     :width="width"
     :height="height"
     :loading="loading"
-    :decoding="decoding"
+    :format="format"
+    :quality="quality"
+    :sizes="sizes"
     :class="imageClass"
     :style="imageStyle"
     @load="onLoad"
@@ -15,11 +17,11 @@
 
 <script setup lang="ts">
 /**
- * Optimized Image Component
- * - Native lazy loading
- * - Async decoding for better performance
- * - Optional blur-up effect
- * - Responsive sizing
+ * Optimized Image Component with @nuxt/image
+ * - Automatic WebP/AVIF conversion
+ * - Responsive sizes
+ * - Lazy loading native
+ * - Optimized quality
  */
 
 interface Props {
@@ -28,14 +30,16 @@ interface Props {
   width?: number
   height?: number
   loading?: 'lazy' | 'eager'
-  decoding?: 'async' | 'sync' | 'auto'
+  format?: 'webp' | 'avif' | 'jpeg' | 'png'
+  quality?: number
+  sizes?: string
   blurUp?: boolean
   objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'
 }
 
 const props = withDefaults(defineProps<Props>(), {
   loading: 'lazy',
-  decoding: 'async',
+  quality: 80,
   blurUp: false,
   objectFit: 'cover'
 })
@@ -54,9 +58,7 @@ const imageClass = computed(() => ({
 }))
 
 const imageStyle = computed(() => ({
-  objectFit: props.objectFit,
-  ...(props.width && { width: `${props.width}px` }),
-  ...(props.height && { height: `${props.height}px` })
+  objectFit: props.objectFit
 }))
 
 const onLoad = () => {
@@ -70,7 +72,7 @@ const onError = () => {
 </script>
 
 <style scoped>
-img {
+:deep(img) {
   display: block;
   max-width: 100%;
   height: auto;
@@ -79,21 +81,16 @@ img {
   backface-visibility: hidden;
 }
 
-.image-loading {
+.image-loading :deep(img) {
   filter: blur(10px);
   transition: filter 0.3s ease;
 }
 
-.image-loaded {
+.image-loaded :deep(img) {
   filter: blur(0);
 }
 
 .will-change-auto {
   will-change: auto;
-}
-
-/* Prevent layout shift */
-img[width][height] {
-  aspect-ratio: attr(width) / attr(height);
 }
 </style>
