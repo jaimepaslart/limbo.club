@@ -11,7 +11,16 @@
           </h1>
 
           <p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-8 max-w-3xl font-light">
-            {{ t('home.hero.subtitle') }}
+            <TypewriterText
+              :text="t('home.hero.subtitle')"
+              :min-delay="40"
+              :max-delay="120"
+              :pause-delay="300"
+              :end-pause="2000"
+              :loop="true"
+              :erase-speed="30"
+              :show-cursor="true"
+            />
           </p>
 
           <p class="text-xl md:text-2xl text-light/50 mb-4 font-light">

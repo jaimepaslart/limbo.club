@@ -220,3 +220,299 @@ npx netlify deploy --prod
 - Formulaires avec gestion d'état (loading, success, error)
 - i18n: caractère @ échappé dans les placeholders (`{'@'}`)
 - Preset Netlify utilisé pour le build Nitro
+
+---
+
+## 🆕 Point de sauvegarde - 12 novembre 2025
+
+### 9. Support multilingue des événements et formulaires 🌐
+
+#### Événements traduits
+**Commit**: `b5df7fc` - Add multilingual support for events and forms
+
+- **Interface TranslatedText** créée dans `types/event.ts`:
+  ```typescript
+  export interface TranslatedText {
+    fr: string
+    eu: string
+    es: string
+  }
+  ```
+
+- **Composable `useTranslatedEvent.ts`** créé:
+  - `getTranslatedText()`: récupère le texte dans la langue active
+  - `getLocalizedEvent()`: retourne un événement avec title/description localisés
+  - `getLocalizedEvents()`: version batch pour tableaux d'événements
+
+- **Tous les 8 événements traduits** dans `data/events.ts`:
+  - Structure: `title: { fr: "...", eu: "...", es: "..." }`
+  - Traductions culturellement adaptées (Basque et Espagnol)
+  - Descriptions complètes en 3 langues
+
+- **Recherche améliorée** (`composables/useEvents.ts`):
+  - Recherche dans le titre traduit
+  - Recherche dans la description traduite
+  - Recherche dans venue et city (non traduits)
+
+#### Formulaires traduits
+
+**EventFilters.vue** - Traduction complète:
+- Labels des filtres (recherche, côté, type, période, ville)
+- Options dynamiques en computed properties
+- Bouton reset traduit
+
+**proposer-un-evenement.vue** - Traduction complète:
+- Tous les labels de champs
+- Placeholders
+- Messages de succès/erreur
+- Boutons d'action
+
+#### Fichiers de traduction enrichis
+
+Ajout dans `i18n/locales/*.json` de:
+
+1. **Section `filters`**:
+   - `title`, `search`, `side`, `type`, `dateRange`, `city`, `reset`
+   - Options pour chaque type d'événement
+   - Options de période
+
+2. **Section `proposeEvent`**:
+   - `sectionTitle` (titre + sous-titre)
+   - `form` (tous les champs + labels + placeholders)
+   - `success` (messages de confirmation)
+   - `error` (messages d'erreur)
+   - `meta` (SEO)
+
+#### Favicon ajouté
+
+- **Fichier**: `public/favicon.svg` (copie du logo Limbo)
+- **Configuration**: `nuxt.config.ts` (link rel="icon")
+- Type: image/svg+xml
+
+#### Correctif i18n
+
+- **Problème**: Symbole `@` dans placeholders email provoquait erreur vue-i18n
+- **Solution**: Échappement avec `{'@'}` dans tous les fichiers de langue
+  - `fr.json`: `votre{'@'}email.com`
+  - `eu.json`: `zure{'@'}emaila.eus`
+  - `es.json`: `tu{'@'}email.com`
+
+### Fichiers modifiés (14 fichiers)
+
+#### Nouveaux fichiers:
+- `composables/useTranslatedEvent.ts` (helper de traduction)
+- `public/favicon.svg` (favicon Limbo)
+
+#### Fichiers modifiés:
+- `types/event.ts` (ajout TranslatedText et Locale)
+- `data/events.ts` (8 événements traduits en FR/EU/ES)
+- `composables/useEvents.ts` (recherche multilingue)
+- `components/EventCard.vue` (utilise getLocalizedEvent)
+- `components/EventFilters.vue` (100% traduit)
+- `pages/index.vue` (affiche événements traduits)
+- `pages/agenda.vue` (affiche événements traduits)
+- `pages/proposer-un-evenement.vue` (100% traduit)
+- `i18n/locales/fr.json` (+110 lignes)
+- `i18n/locales/eu.json` (+110 lignes)
+- `i18n/locales/es.json` (+110 lignes)
+- `nuxt.config.ts` (favicon link)
+
+### État actuel
+
+**Branche**: main (1 commit en avance sur origin)
+**Commit**: `b5df7fc`
+**Serveur**: ✅ Fonctionne sur http://localhost:3000
+**Build**: ✅ Sans erreurs
+
+### Statistiques du commit
+- 629 insertions (+)
+- 102 suppressions (-)
+- 14 fichiers modifiés
+- 2 fichiers créés
+
+### À faire
+- [x] Push vers origin/main ✅
+- [x] Déployer sur Netlify ✅
+- [x] Tester les traductions en production (FR/EU/ES) ✅
+- [x] Vérifier le favicon sur tous les navigateurs ✅
+- [x] Tester le changement de langue avec les événements ✅
+
+---
+
+## 10. Animation Typewriter (Section Hero)
+**Date**: 2025-11-12
+**Commit**: En cours
+**État**: Fonctionnel ✅
+
+### Contexte
+
+Sur la page d'accueil, le texte "Expo · Party · Lecture · Design" était statique. L'objectif était d'ajouter une animation "machine à écrire" minimaliste avec une cadence humaine.
+
+### Implémentation
+
+#### 1. Composant TypewriterText.vue
+
+**Fichier**: `components/TypewriterText.vue`
+
+**Fonctionnalités**:
+- ✅ Écriture lettre par lettre avec délai aléatoire (40-120ms)
+- ✅ Pauses intelligentes sur les séparateurs (·, espaces, ponctuation) - 300ms
+- ✅ Boucle infinie : efface puis réécrit automatiquement
+- ✅ Curseur clignotant animé (530ms)
+- ✅ SSR-friendly : animation uniquement côté client (`onMounted`)
+- ✅ Nettoyage automatique des timers (`onUnmounted`)
+
+**Props disponibles**:
+```typescript
+interface Props {
+  text: string          // Le texte à animer
+  minDelay?: number     // Délai min entre caractères (défaut: 40ms)
+  maxDelay?: number     // Délai max entre caractères (défaut: 120ms)
+  pauseDelay?: number   // Pause après séparateurs (défaut: 300ms)
+  endPause?: number     // Pause avant de boucler (défaut: 2000ms)
+  loop?: boolean        // Active la boucle (défaut: true)
+  eraseSpeed?: number   // Vitesse d'effacement (défaut: 30ms)
+  showCursor?: boolean  // Affiche le curseur (défaut: true)
+}
+```
+
+**Logique principale**:
+
+1. **`getRandomDelay()`** : Génère un délai aléatoire entre min/max pour simuler frappe humaine
+2. **`needsPause()`** : Détecte les caractères nécessitant une pause (regex `/[\s·,;.!?]/`)
+3. **`typeText()`** : Animation d'écriture caractère par caractère
+   - Ajoute chaque caractère à `displayedText`
+   - Applique délai aléatoire ou pause selon le caractère
+   - À la fin : pause puis lance `eraseText()` si `loop=true`
+4. **`eraseText()`** : Animation d'effacement
+   - Retire le dernier caractère de `displayedText`
+   - Après effacement complet : relance `typeText()`
+5. **`startCursorBlink()`** : Animation du curseur (toggle toutes les 530ms)
+
+**Cycle d'animation**:
+```
+Écriture (40-120ms/char + 300ms aux séparateurs)
+  ↓
+Pause finale (2000ms)
+  ↓
+Effacement (30ms/char)
+  ↓
+Pause courte (500ms)
+  ↓
+Recommence ↻
+```
+
+#### 2. Intégration dans index.vue
+
+**Fichier**: `pages/index.vue` (lignes 13-24)
+
+**Avant**:
+```vue
+<p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-8 max-w-3xl font-light">
+  {{ t('home.hero.subtitle') }}
+</p>
+```
+
+**Après**:
+```vue
+<p class="text-2xl md:text-3xl lg:text-4xl text-light/60 mb-8 max-w-3xl font-light">
+  <TypewriterText
+    :text="t('home.hero.subtitle')"
+    :min-delay="40"
+    :max-delay="120"
+    :pause-delay="300"
+    :end-pause="2000"
+    :loop="true"
+    :erase-speed="30"
+    :show-cursor="true"
+  />
+</p>
+```
+
+### Détails techniques
+
+#### Animation du curseur (CSS)
+```css
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+```
+
+#### Gestion des timers
+- **`timeoutId`** : Contrôle l'écriture/effacement caractère par caractère
+- **`cursorIntervalId`** : Contrôle le clignotement du curseur
+- Tous les timers sont nettoyés dans `onUnmounted()` pour éviter les fuites mémoire
+
+#### SSR-friendly
+L'animation démarre uniquement dans `onMounted()`, évitant les erreurs SSR liées à `setTimeout`/`setInterval`.
+
+### Comportement visuel
+
+**Texte animé**: "Expo · Party · Lecture · Design"
+
+**Timeline**:
+1. **Écriture** : ~5-6 secondes
+   - "E" → "Ex" → "Exp" → "Expo" [pause 300ms] → "·" [pause 300ms] → "P"...
+2. **Pause finale** : 2 secondes (texte complet visible)
+3. **Effacement** : ~1 seconde (30ms × 33 caractères)
+4. **Pause courte** : 0.5 seconde
+5. **Recommence** : Boucle infinie
+
+### Multilinguisme
+
+Le composant fonctionne avec le système i18n :
+- **FR** : "Expo · Party · Lecture · Design"
+- **EU** : (traduction basque de home.hero.subtitle)
+- **ES** : (traduction espagnole de home.hero.subtitle)
+
+L'animation s'adapte automatiquement à la longueur du texte traduit.
+
+### Personnalisation
+
+**Animation plus rapide** :
+```vue
+:min-delay="20"
+:max-delay="60"
+:pause-delay="150"
+```
+
+**Sans boucle** (écriture unique) :
+```vue
+:loop="false"
+```
+
+**Sans curseur** :
+```vue
+:show-cursor="false"
+```
+
+**Pause plus longue** :
+```vue
+:end-pause="5000"
+```
+
+### Fichiers modifiés (2 fichiers)
+
+- `components/TypewriterText.vue` (153 lignes) - Créé/remplacé
+- `pages/index.vue` (lignes 13-24) - Modifié
+
+### État actuel
+
+**Branche**: main
+**Serveur**: ✅ Fonctionne sur http://localhost:3000
+**Animation**: ✅ Fonctionnelle en local
+**Compatibilité**: ✅ SSR-friendly, pas d'erreurs
+
+### Prochaines étapes
+
+- [ ] Tester l'animation sur différents navigateurs
+- [ ] Vérifier les performances (pas de lag avec l'animation)
+- [ ] Optionnel : Ajuster les timings selon le rendu visuel souhaité
+- [ ] Commit et déploiement sur production
