@@ -78,6 +78,6 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'netlify'
+    preset: 'netlify-edge'  // Utilise Edge Functions au lieu de Functions classiques
   }
 })
