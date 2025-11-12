@@ -4,13 +4,16 @@
       "agenda": "Agenda",
       "quiz": "Quiz",
       "proposeEvent": "Proponer un evento",
-      "about": "Acerca de"
+      "about": "Acerca de",
+      "mobileMenu": "Menú de navegación",
+      "language": "Idioma"
     },
     "actions": {
       "learnMore": "Saber más",
       "discover": "Descubrir la agenda",
       "startQuiz": "Empezar el quiz",
-      "viewAll": "Ver todos los eventos"
+      "viewAll": "Ver todos los eventos",
+      "close": "Cerrar"
     }
   },
   "home": {

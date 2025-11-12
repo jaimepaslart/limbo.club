@@ -21,40 +21,28 @@
           <LanguageSwitcher />
         </div>
 
-        <!-- Mobile Menu Button -->
+        <!-- Mobile Menu Button (Burger) -->
         <div class="md:hidden">
           <button
-            @click="mobileMenuOpen = !mobileMenuOpen"
-            class="text-light/60 hover:text-light transition-colors"
-            aria-label="Toggle menu"
+            @click="mobileMenuOpen = true"
+            class="burger-btn"
+            aria-label="Ouvrir le menu"
+            :aria-expanded="mobileMenuOpen"
+            aria-controls="mobile-drawer"
           >
-            <span class="text-sm uppercase tracking-wider">{{ mobileMenuOpen ? 'Fermer' : 'Menu' }}</span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
           </button>
         </div>
       </div>
-
-      <!-- Mobile Navigation -->
-      <Transition name="slide-fade">
-        <div
-          v-if="mobileMenuOpen"
-          class="md:hidden py-8 border-t border-white/5"
-        >
-          <NuxtLink
-            v-for="item in navItems"
-            :key="item.to"
-            :to="item.to"
-            class="block py-4 text-light/60 hover:text-light transition-colors text-lg uppercase tracking-wider font-medium"
-            active-class="text-light"
-            @click="mobileMenuOpen = false"
-          >
-            {{ item.label }}
-          </NuxtLink>
-          <div class="pt-4 mt-4 border-t border-white/5">
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </Transition>
     </nav>
+
+    <!-- Mobile Drawer -->
+    <MobileNavDrawer
+      :is-open="mobileMenuOpen"
+      @close="mobileMenuOpen = false"
+    />
   </header>
 </template>
 
@@ -92,14 +80,32 @@ const navItems = computed(() => [
   z-index: 1;
 }
 
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all 0.3s ease;
+/* Bouton burger pour menu mobile */
+.burger-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
+.burger-btn:hover {
+  opacity: 0.7;
+}
+
+.burger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-muted);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.burger-btn:hover .burger-line {
+  background-color: var(--color-text);
 }
 </style>

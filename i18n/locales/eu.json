@@ -4,13 +4,16 @@
       "agenda": "Agenda",
       "quiz": "Quiz",
       "proposeEvent": "Ekitaldia proposatu",
-      "about": "Honi buruz"
+      "about": "Honi buruz",
+      "mobileMenu": "Nabigazio menua",
+      "language": "Hizkuntza"
     },
     "actions": {
       "learnMore": "Gehiago jakin",
       "discover": "Agenda deskubritu",
       "startQuiz": "Quiza hasi",
-      "viewAll": "Ekitaldi guztiak ikusi"
+      "viewAll": "Ekitaldi guztiak ikusi",
+      "close": "Itxi"
     }
   },
   "home": {
