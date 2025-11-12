@@ -1,13 +1,5 @@
 <template>
-  <img
-    src="/images/logo-limbo.svg"
-    alt="Limbo - Agenda culturel transfrontalier Pays Basque"
-    :class="classes"
-    width="120"
-    height="40"
-    fetchpriority="high"
-    loading="eager"
-  >
+  <LogoSvg :size="size" :color="color" />
 </template>
 
 <script setup lang="ts">
@@ -21,19 +13,5 @@ const props = withDefaults(defineProps<Props>(), {
   color: 'light'
 })
 
-const classes = computed(() => {
-  const sizes = {
-    sm: 'h-6',
-    md: 'h-8',
-    lg: 'h-12',
-    xl: 'h-16'
-  }
-
-  const colors = {
-    light: 'text-light',
-    primary: 'text-primary'
-  }
-
-  return `${sizes[props.size]} w-auto ${colors[props.color]}`
-})
+const { size, color } = toRefs(props)
 </script>
